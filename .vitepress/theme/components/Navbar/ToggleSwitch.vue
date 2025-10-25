@@ -4,8 +4,8 @@
         <span class="label">主题</span>
         <div class="select-wrapper">
           <select v-model="selectedTheme" @change="changeTheme">
-            <option value="light">Arona</option>
-            <option value="dark">Plana</option>
+            <option value="light">Sun</option>
+            <option value="dark">Moon</option>
             <option value="system">System</option>
           </select>
           <span class="select-arrow">▼</span>
@@ -33,7 +33,7 @@
   
   const toggles = {
       fireworksEnabled: '烟花',
-      SpinePlayerEnabled: 'Spine',
+      //SpinePlayerEnabled: 'Spine',
   }
   
   let darkModeMediaQuery: MediaQueryList
@@ -54,6 +54,7 @@
               state.darkMode = theme
           }
       }
+      
   
       // 如果是system模式,启动监听
       if (selectedTheme.value === 'system') {
@@ -69,6 +70,10 @@
           if (storedValue !== null) {
               state[key] = JSON.parse(storedValue);
           }
+          // 设置默认值
+            if (key === 'SpinePlayerEnabled') {
+                state[key] = false;  // 默认关闭 Spine
+            }
       });
   });
   
