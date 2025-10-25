@@ -1,7 +1,7 @@
 ---
 title: games101(1) -- 透视投影矩阵
-date: 2025-10-24
-tags: [tinf]
+date: 2025-10-25
+tags: [games101, c++, 图形学]
 head:
   - - meta
     - name: perspective

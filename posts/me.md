@@ -1,6 +1,6 @@
 ---
 title: About 葶风
-date: 2025-10-24
+date: 2025-10-25
 tags: [tinf]
 pinned: true
 head:

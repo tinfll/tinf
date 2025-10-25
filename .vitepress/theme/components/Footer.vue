@@ -12,7 +12,7 @@
       >
     </div>
     <div class="footer-logo">
-      <img @dragstart.prevent src="../assets/icon/footLogo.svg" alt="logo-vitepress" />
+      <img @dragstart.prevent src="/icon/footLogo.svg" alt="logo-vitepress" />
     </div>
   </footer>
 </template>
