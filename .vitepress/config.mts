@@ -77,7 +77,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     menuList: [
       { name: '首页', url: '' },
       { name: '标签', url: 'tags/' },
-      { name : '遗世', url: 'ethers/'}
+      { name: '遗世', url: 'ethers/' }
     ],
 
     //banner区配置
@@ -101,13 +101,11 @@ export default defineConfigWithTheme<ThemeConfig>({
       { name: 'VitePress', url: 'https://github.com/vuejs/vitepress' },
       { name: 'GitHub Pages', url: 'https://docs.github.com/zh/pages' },
     ],
-
-    //gitalk配置
-    /*clientID: 'Ov23lia9U9wFN3WMyoKK',
-    clientSecret: 'b2418ab598c188c43a247c99e728dd2735d58c3b',
-    repo: 'vitepress-theme-bluearchive',
-    owner: 'Alittfre',
-    admin: ['Alittfre'],*/
+    clientID: '',
+    clientSecret: '',
+    repo: '',
+    owner: '',
+    admin: []
   },
   markdown: {
     theme: 'solarized-dark',
