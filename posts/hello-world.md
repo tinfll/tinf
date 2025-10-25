@@ -1,8 +1,8 @@
 ---
-title: HelloWorld
-date: 2024-04-16
-tags: [HelloWorld, vue, vitepress]
-pinned: true
+title: helloworld
+date: 2025-10-25
+tags: [tinf]
+
 head:
   - - meta
     - name: description
@@ -12,11 +12,11 @@ head:
       content: vitepress theme bluearchive HelloWorld
 ---
 
-只是一个 HelloWorld
+此博客出自轻改模版
 
 ---
 
-# Markdown Extension Examples
+# 葶风看月
 
 This page demonstrates some of the built-in markdown extensions provided by VitePress.
 
