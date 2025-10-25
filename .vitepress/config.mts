@@ -69,22 +69,23 @@ export default defineConfigWithTheme<ThemeConfig>({
   // sitemap: {
   //   hostname: 'https://vitepress-theme-bluearchive.vercel.app',
   // },
-  title: "Sensei's 部落格",
-  description: "Sensei's 部落格",
+  title: "Welcome to the Ethearl",
+  description: "葶风看月",
   themeConfig: {
     // navBar
     menuList: [
       { name: '首页', url: '' },
       { name: '标签', url: 'tags/' },
+      { name : '遗世', url: 'ethers/'}
     ],
 
     //banner区配置
     videoBanner: false,
-    name: "Sensei's 部落格",
-    welcomeText: 'Hello, VitePress',
-    motto: ['和你的日常，就是奇迹', '何気ない日常で、ほんの少しの奇跡を見つける物語。'],
+    name: "葶风看月",
+    welcomeText: 'Welcome to the Ethearl',
+    motto: ['徘徊在梦境的边缘'],
     social: [
-      { icon: 'github', url: 'https://github.com/' },
+      { icon: 'github', url: 'https://github.com/tinfll' },
       { icon: 'bilibili', url: 'https://www.bilibili.com/' },
       { icon: 'qq', url: 'https://im.qq.com/index/' },
       { icon: 'wechat', url: 'https://weixin.qq.com/' },
@@ -94,7 +95,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     spineVoiceLang: 'jp',
 
     //footer配置
-    footerName: 'Sensei',
+    footerName: 'tinfengkanyue © 2025',
     poweredList: [
       { name: 'VitePress', url: 'https://github.com/vuejs/vitepress' },
       { name: 'GitHub Pages', url: 'https://docs.github.com/zh/pages' },
