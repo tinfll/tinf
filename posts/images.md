@@ -1,6 +1,6 @@
 ---
 title: Images
-date: 2025-10-24
+date: 2025-10-25
 tags: [仟虹]
 head:
   - - meta
@@ -15,11 +15,11 @@ This is a image test post.
 
 ---
 
-::: tip
+::: info
 img 来自quan（啊画风应该很有辨识度（，因为实在和某位重合度太高了固这张图一直是我最喜欢的一张，等我之后闲下来就去约稿！！：
 
 ```md
-<img src="/3.webp" data-fancybox="gallery"/>
+<img src="/3.webp" data-fancybox="public"/>
 ```
 
 :::
@@ -28,7 +28,7 @@ img 来自quan（啊画风应该很有辨识度（，因为实在和某位重合
 用mbti来说我都不知道她是isfj还是intj还是infp还是啥....
 
 
- `![](/3.webp)`  `<img src="/3.webp" data-fancybox="gallery"/>` 
+ `qmhs`   
 
 <img src="/3.webp" data-fancybox="gallery"/>
 
