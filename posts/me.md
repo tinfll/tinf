@@ -6,72 +6,42 @@ pinned: true
 head:
   - - meta
     - name: description
-      content: vitepress-theme-bluearchive Elements
+      content: tinf
   - - meta
     - name: keywords
-      content: vitepress theme bluearchive Elements
+      content: tinf
 ---
 
-The purpose of this post is to help you make sure all of HTML elements can display properly. If you use CSS reset, don't forget to redefine the style by yourself.
-
----
-
-# Heading 1
-
-## Heading 2
-
-### Heading 3
-
-#### Heading 4
-
-##### Heading 5
-
-###### Heading 6
+本篇用於介紹自己
 
 ---
 
-## Paragraph
+# 葶风看月
 
-Lorem ipsum dolor sit amet, [test link]() consectetur adipiscing elit. **Strong text** pellentesque ligula commodo viverra vehicula. _Italic text_ at ullamcorper enim. Morbi a euismod nibh. <u>Underline text</u> non elit nisl. ~~Deleted text~~ tristique, sem id condimentum tempus, metus lectus venenatis mauris, sit amet semper lorem felis a eros. Fusce egestas nibh at sagittis auctor. Sed ultricies ac arcu quis molestie. Donec dapibus nunc in nibh egestas, vitae volutpat sem iaculis. Curabitur sem tellus, elementum nec quam id, fermentum laoreet mi. Ut mollis ullamcorper turpis, vitae facilisis velit ultricies sit amet. Etiam laoreet dui odio, id tempus justo tincidunt id. Phasellus scelerisque nunc sed nunc ultricies accumsan.
+---
 
-Interdum et malesuada fames ac ante ipsum primis in faucibus. `Sed erat diam`, blandit eget felis aliquam, rhoncus varius urna. Donec tellus sapien, sodales eget ante vitae, feugiat ullamcorper urna. Praesent auctor dui vitae dapibus eleifend. Proin viverra mollis neque, ut ullamcorper elit posuere eget.
+## 简介
 
-> Praesent diam elit, interdum ut pulvinar placerat, imperdiet at magna.
+所以你们看到这个类似古风小生的cn实际上...因为我小学时混了一小段时间第五人格古偶网文的逆天圈子...
+当时注册第五网名（18年的时候貌似，不记得了）想取听风看月但防重名于是第一个字改成葶。
+然后谁知道就用到现在了？？
+但是依然可称呼我为“彩彩”（小名，没错，不是那位修车彩彩，但重名），“cc”，“草草”（这两是被光荣授予的神经外号）
+想起《风声》里金生火的一句话：“人生在世，最不堪问的，就是出生啊。”，不知道为什么想起来，这里我应该把身世更广义化地处理了，。
 
-Maecenas ornare arcu at mi suscipit, non molestie tortor ultrices. Aenean convallis, diam et congue ultricies, erat magna tincidunt orci, pulvinar posuere mi sapien ac magna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent vitae placerat mauris. Nullam laoreet ante posuere tortor blandit auctor. Sed id ligula volutpat leo consequat placerat. Mauris fermentum dolor sed augue malesuada sollicitudin. Vivamus ultrices nunc felis, quis viverra orci eleifend ut. Donec et quam id urna cursus posuere. Donec elementum scelerisque laoreet.
+目前大一，？，
+回想自己过往其实还是挺精彩的，emm有空再添上去？，个人认为还是很精彩的，算是某种独一无二的人生经历塑造了现在的我？
 
-## List Types
+不闲扯了介绍下这个博客要干嘛
+高考完暑假装了个小工作站台式机，然后暑假搞完cs50 ~~（如搞完，但那是依然小镇做题家~~，然后就去看cs106b了，现在推导a6，games101推到a2，ue5正在学，然后瞬间就发现必须得有记录博客的必要！！（知乎和b站营销味道太重了...，自己也是重度内倾的人，，，固弄博客，
 
-### Definition List (dl)
+而且目前时间也很紧emm，所以暂时拿到一个现成的模版用作记录了..（虽然对于我而言有种罪恶感、、。
 
-<dl><dt>Definition List Title</dt><dd>This is a definition list division.</dd></dl>
 
-### Ordered List (ol)
+## 遗世
+未来要走cs吗？说实话我不是很清楚。唯一清楚的也在博客中展示了，遗世emm？算是个人oc世界观？人物算是oc？（是吗？我也不清楚，但是渐渐就成了自己生命的意义？（如是？虽然说起来有点中二病，但也和个人经历有关吧。？
 
-1. List Item 1
-2. List Item 2
-3. List Item 3
+以及挺厌恶将遗世公开展示出来，也反感与其他人交流这件事，我知道自己在这个方面很极端，不想把她作为社交的工具也不想拿她作为谋利的成本，所以依然在大学这个半象牙塔里，它还是能陪伴我继续学习（嗯。
 
-### Unordered List (ul)
+## 随笔
+可能也会在博客里记录日常生活这样（hhh...
 
-- List Item 1
-- List Item 2
-- List Item 3
-
-### Checkbox List (ul)
-
-- [ ] List Item 1 unchecked
-- [x] List Item 2 checked
-- [x] List Item 3 checked
-
-## Table
-
-| Table Header 1 | Table Header 2 | Table Header 3 |
-| -------------- | -------------- | -------------- |
-| Division 1     | Division 2     | Division 3     |
-| Division 1     | Division 2     | Division 3     |
-| Division 1     | Division 2     | Division 3     |
-
-## Misc Stuff - abbr, acronym, sub, sup, kbd, etc.
-
-Lorem <sup>superscript</sup> dolor <sub>subscript</sub> amet, consectetuer adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. <cite>cite</cite>. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. <acronym title="National Basketball Association">NBA</acronym> Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus. <abbr title="Avenue">AVE</abbr>. Use <kbd>Crtl</kbd> + <kbd>C</kbd> to stop.

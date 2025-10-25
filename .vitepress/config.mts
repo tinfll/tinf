@@ -31,9 +31,10 @@ export default defineConfigWithTheme<ThemeConfig>({
   lang: 'zh-CN',
   head: [
     ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
-    // gitalk
-    ['link', { rel: 'stylesheet', href: 'https://unpkg.com/gitalk/dist/gitalk.css' }],
+    //gitalk
+    /*['link', { rel: 'stylesheet', href: 'https://unpkg.com/gitalk/dist/gitalk.css' }],
     ['script', { src: 'https://unpkg.com/gitalk/dist/gitalk.min.js' }],
+    */
     // bluearchive font
     [
       'link',
@@ -102,11 +103,11 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     //gitalk配置
-    clientID: 'Ov23lia9U9wFN3WMyoKK',
+    /*clientID: 'Ov23lia9U9wFN3WMyoKK',
     clientSecret: 'b2418ab598c188c43a247c99e728dd2735d58c3b',
     repo: 'vitepress-theme-bluearchive',
     owner: 'Alittfre',
-    admin: ['Alittfre'],
+    admin: ['Alittfre'],*/
   },
   markdown: {
     theme: 'solarized-dark',
