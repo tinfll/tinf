@@ -1,14 +1,14 @@
 ---
 title: Images
-date: 2013-12-26
-tags: [image]
+date: 2025-10-24
+tags: [仟虹]
 head:
   - - meta
     - name: description
-      content: vitepress-theme-bluearchive Images
+      content: qianhong 's Images
   - - meta
     - name: keywords
-      content: vitepress theme bluearchive Images
+      content: Images
 ---
 
 This is a image test post.
@@ -16,16 +16,23 @@ This is a image test post.
 ---
 
 ::: tip
-img 标签的图片灯箱效果需要加入属性选择器：
+img 来自quan（啊画风应该很有辨识度（，因为实在和某位重合度太高了固这张图一直是我最喜欢的一张，等我之后闲下来就去约稿！！：
 
 ```md
-<img src="/wallpaper-2572384.webp" data-fancybox="gallery"/>
+<img src="/3.webp" data-fancybox="gallery"/>
 ```
 
 :::
 
-> `![](/wallpaper-2572384.webp)` ![](/wallpaper-2572384.webp) `<img src="/wallpaper-2572384.webp" data-fancybox="gallery"/>` <img src="/wallpaper-2572384.webp" data-fancybox="gallery"/>
+>仟虹陪伴我太久了...让我介绍她我都不知从哪说起？？...因为一介绍oc就会涉及世界观问题，总而言之就是虚无主义....
+用mbti来说我都不知道她是isfj还是intj还是infp还是啥....
 
-![Caption](/wallpaper-2311325.webp)
+
+ `![](/3.webp)`  `<img src="/3.webp" data-fancybox="gallery"/>` 
+
+<img src="/3.webp" data-fancybox="gallery"/>
+
+~~怜怜可爱捏~~
+![Caption](/IMG_7831.webp)
 
 ![](/wallpaper-878514.webp)

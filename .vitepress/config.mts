@@ -87,7 +87,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     motto: ['徘徊在梦境的边缘'],
     social: [
       { icon: 'github', url: 'https://github.com/tinfll' },
-      { icon: 'bilibili', url: 'https://www.bilibili.com/' },
+      { icon: 'bilibili', url: ' https://b23.tv/zUV6qLv' },
       { icon: 'qq', url: 'https://im.qq.com/index/' },
       { icon: 'wechat', url: 'https://weixin.qq.com/' },
     ],
