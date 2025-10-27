@@ -11,9 +11,9 @@ import { ref, onMounted } from 'vue'
 
 const active = ref<string | null>(null)
 const worksData = ref([
-  { id: 'work1', title: '雨夜书店' },
-  { id: 'work2', title: '城市边缘' },
-  { id: 'work3', title: '时光碎片' }
+  { id: 'work1', title: '' },
+  { id: 'work2', title: '' },
+  { id: 'work3', title: '' }
 ])
 
 const setWork = (workId: string) => {
