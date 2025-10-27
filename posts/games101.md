@@ -14,7 +14,14 @@ head:
 Games101学习过程
 
 ---
-# games101(1) -- 透视投影矩阵
+# 文献资料
+- games101
+- Real-Time Rendering
+- 虎书
+- OpenGL / DirectX 官方文档
+- deepseek/Gemini
+
+
 ## 2025-10-25
 齐次坐标系不是笛卡尔坐标系
 相机移动到原点，求逆简单，再求逆。
@@ -72,6 +79,7 @@ projection = M_scale * M_trans * M_p2o;
 光栅化后面给的z,w公式用于用重心插值修正投影过去的偏差，就和第一课遗留问题一样，中间的点经过透视投影矩阵（前一个阶段，不对，还是整个过程..?）后前进还是后退的问题，因为[（z+f）z-nf]/z算出来只与1/z呈线性相关，所以需要引入w...
 
 引入w...修正？...救命啊这一块还说不清楚。。。
+
 ```cpp
 void rst::rasterizer::rasterize_triangle(const Triangle& t) {
     auto v = t.toVector4();
@@ -116,3 +124,69 @@ void rst::rasterizer::rasterize_triangle(const Triangle& t) {
     // TODO : set the current pixel (use the set_pixel function) to the color of the triangle (use getColor function) if it should be painted.
 }
 ```
+
+## 10.27
+打赢复活赛了家人们
+就是透视投影p2o那个变化完会变，然后有几个空间系坐标搞清楚，
+```md
+M_p2o = 
+[ n, 0,   0,     0    ]
+[ 0, n,   0,     0    ]  
+[ 0, 0, n+f,   -n*f   ]
+[ 0, 0,  -1,     0    ]
+```
+
+对于点(x,y,z,1)
+
+```md
+[x_clip]   [  n*x    ]
+[y_clip] = [  n*y    ]
+[z_clip]   [(n+f)z - n*f]
+[w_clip]   [   -z    ]
+```
+
+x_ndc = x_clip / w_clip = -n*x / z
+y_ndc = y_clip / w_clip = -n*y / z  
+z_ndc = z_clip / w_clip = -[(n+f)z - n*f] / z
+
+x_ndc, y_ndc, z_ndc 都与 1/z 成线性关系
+
+在屏幕空间中，重心坐标插值是线性的：
+但由于 z_ndc ∝ 1/z_view，所以：
+
+如果直接插值 z_view → 错误
+应该插值 1/z_view → 正确
+
+```md
+属性_screen = α·属性0_screen + β·属性1_screen + γ·属性2_screen
+对于任意属性 A（颜色、法线、纹理坐标等）：
+A_view = α·A0_view + β·A1_view + γ·A2_view
+A_screen = A_view / z_view × (-n)  // 因为透视投影
+A_screen ∝ A_view / z_view
+
+```
+
+手推下，分子分母换一换，写成分数形式更直观
+```md
+A_screen = [α·(A0_view/z0) + β·(A1_view/z1) + γ·(A2_view/z2)] / [α·(1/z0) + β·(1/z1) + γ·(1/z2)]
+
+```
+
+
+有点离谱了啊...为什么会理到图形管线那边...我先去多写点作业再梳理...
+自己学东西的坏习惯就又开始拼拼图了。。。
+
+
+```md
+模型坐标 → 世界坐标 → 观察坐标 → 裁剪坐标 → NDC坐标 → 屏幕坐标
+     ↓         ↓         ↓         ↓         ↓         ↓
+   几何数据   场景布局   相机相对   齐次坐标   标准化    像素位置
+                             透视投影开始   透视投影结束
+                                         ↑
+                                 透视校正插值发生在这里(但是由w_clip存储z_view的值)
+
+
+```
+
+要不然下学期转专业转材料吧？感觉挺好的？(但是我不想学化学就是了。。？也不一定，
+
