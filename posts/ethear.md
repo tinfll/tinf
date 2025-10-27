@@ -1,6 +1,6 @@
 ---
 title: 遗世
-date: 2025-10-24
+date: 2025-10-25
 tags: [遗世]
 head:
   - - meta
