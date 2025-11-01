@@ -290,3 +290,96 @@ p 控制高光斑的"集中程度
 。
 
 
+改normal很痛苦，然后重新复现一遍发现原来的bug没了。失去了改bug的机会（。
+
+
+
+```cpp
+Eigen::Vector3f phong_fragment_shader(const fragment_shader_payload& payload)
+{
+	Eigen::Vector3f ka = Eigen::Vector3f(0.005, 0.005, 0.005);
+	Eigen::Vector3f kd = payload.color;
+	Eigen::Vector3f ks = Eigen::Vector3f(0.7937, 0.7937, 0.7937);
+
+	auto l1 = light{ {20, 20, 20}, {500, 500, 500} };
+	auto l2 = light{ {-20, 20, 0}, {500, 500, 500} };
+
+	std::vector<light> lights = { l1, l2 };
+	Eigen::Vector3f amb_light_intensity{ 10, 10, 10 };
+	Eigen::Vector3f eye_pos{ 0, 0, 10 };
+
+	float p = 150;
+
+	Eigen::Vector3f color = payload.color;
+	Eigen::Vector3f point = payload.view_pos;
+	Eigen::Vector3f normal = payload.normal;
+
+	Eigen::Vector3f result_color = { 0, 0, 0 };
+	for (auto& light : lights)
+	{
+		// TODO: For each light source in the code, calculate what the *ambient*, *diffuse*, and *specular* 
+		// components are. Then, accumulate that result on the *result_color* object.
+
+		Vector3f light_dir = (light.position - point).normalized();
+		Vector3f view_dir = (eye_pos - point).normalized();
+		Vector3f half_vector = (light_dir + view_dir).normalized();
+		normal.normalize();
+
+		float distance_square = (light.position - point).squaredNorm();
+
+		Vector3f ambient = ka.cwiseProduct(amb_light_intensity);
+		Vector3f diffuse = kd.cwiseProduct(light.intensity / distance_square) * std::max(0.0f, normal.dot(light_dir));
+		Vector3f specular = ks.cwiseProduct(light.intensity / distance_square) * std::pow(std::max(0.0f, normal.dot(half_vector)), p);
+
+		result_color += ambient + diffuse + specular;
+	}
+
+	return result_color * 255.f;
+}
+```
+
+
+## 11.1
+...理解bump和displacement着色感觉有点困难...
+
+
+t（切线）：表面的"右方向"
+
+
+b（副切线）：表面的"前方向"
+
+
+大概就是这样的坐标系
+
+
+
+。。
+
+
+![](/image3.webp)
+
+
+其实还挺赛博朋克的。
+
+
+。。？等会？。。
+
+
+这是随机找了个垂直t的
+
+
+![](/cyberrandomnornal.webp)
+
+
+？这是t不垂直法线的？
+
+
+![](/4.webp)
+
+
+所以真就看的差不多就行...?
+
+
+不对，看起来还是有差别的，第一个绿色光如果是高光的话看起来就会更合理些，具体差别是计算这个
+
+
