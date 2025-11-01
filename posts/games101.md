@@ -383,3 +383,37 @@ b（副切线）：表面的"前方向"
 不对，看起来还是有差别的，第一个绿色光如果是高光的话看起来就会更合理些，具体差别是计算这个
 
 
+1.
+```md
+Eigen::Vector3f t;
+if (abs(normal.x()) > abs(normal.z())) {
+	t = Eigen::Vector3f(-normal.y(), normal.x(), 0.0f);
+}
+else {
+	t = Eigen::Vector3f(0.0f, -normal.z(), normal.y());
+}
+t.normalize();
+```
+
+
+2.
+```md
+	t << x * y / sqrt(x * x + z * z), sqrt(x * x + z * z), z* y / sqrt(x * x + z * z);
+```
+
+
+。。。好奇怪，为什么今天怎么也没办法把知识体系串在一起？。。
+
+
+还是尝试理一下吧。
+
+
+bumpshader & displacement 
+
+
+我觉得
+主要是将法线用颜色表示，但是还是怪怪的，虽然从直觉上来说，凹凸不平确实可以用这个来表述
+
+
+片段法线
+
