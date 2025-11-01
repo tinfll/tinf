@@ -1,6 +1,6 @@
 ---
 title: Games101
-date: 2025-10-25
+date: 2025-11-01
 tags: [games101, c++, 图形学]
 head:
   - - meta
