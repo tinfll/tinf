@@ -20,7 +20,7 @@ head:
 
 <video controls width="100%">
   <source src="/d2a23fe0aa8b5e55bbcb002854734916.mp4" type="video/mp4">
-  您的浏览器不支持 video 标签。
+
 </video>
 
 
