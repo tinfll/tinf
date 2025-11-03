@@ -19,11 +19,11 @@ head:
 尝试弄了一一整天live2d，但是博客貌似不能弄导出视频emm...或者gif...?等下
 
 <video controls width="100%">
-  <source src="/2025-11-02_22-44-54.mp4" type="video/mp4">
+  <source src="/d2a23fe0aa8b5e55bbcb002854734916.mp4" type="video/mp4">
   您的浏览器不支持 video 标签。
 </video>
 
-[def]: /2025-11-02_22-44-54.mp4
+
 
 
 好耶好耶效果非常好的说！！
