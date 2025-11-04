@@ -1,6 +1,6 @@
 ---
 title: Games101
-date: 2025-11-01
+date: 2025-11-04
 tags: [games101, c++, 图形学]
 head:
   - - meta
@@ -279,10 +279,6 @@ p 控制高光斑的"集中程度
 
 
 因为自己代码那个phong模型加上去就有一些问题，输出颜色更暗1并不是褐色的。
-<<<<<<< HEAD
-```cpp
-=======
->>>>>>> 7068ac013fdd6d56ccad34075837681bd871f90c
 
 
 然后材质着色则是用法线着色了，即使把加载图片改过来。
@@ -420,4 +416,45 @@ bumpshader & displacement
 
 
 片段法线
+
+
+## 11.04
+我是智障啊我就说为什么我理解起来那么费劲，我games101课程里面没发现原来视频里讲了凹凸和位移贴图啊。。？？。。
+
+
+虽然自己已经大致了解完了，所以即使重看了一遍还是不理解具体的细原理节，，回头去别的课程里面查查看看呢。？
+
+
+浅浅在焦虑和忙里偷闲的时候写一下bezier函数递归部分，感觉和伯努利实验很像（高中死去的记忆突然开始攻击我（。。。）
+
+
+然后也想到AE里面用bezier曲线弄蒙版画光线轨迹（嗯。）应该是这个算法，但是貌似还有啥贝塞尔函数速率变换。。？
+
+
+```cpp
+cv::Point2f recursive_bezier(const std::vector<cv::Point2f> &control_points, float t) 
+{
+    // TODO: Implement de Casteljau's algorithm
+    if (control_points.size() == 1)
+        return control_points[0];
+    
+    std::vector<cv::Point2f> np;
+    for (int i = 0; i < control_points - 1; i++) 
+        np.push_back(control_points[i] * (1 - t) + control_points[i + 1] * t);
+    
+    return recursive_bezier(np, t);
+}
+
+void bezier(const std::vector<cv::Point2f> &control_points, cv::Mat &window) 
+{
+    // TODO: Iterate through all t = 0 to t = 1 with small steps, and call de Casteljau's 
+    // recursive Bezier algorithm.
+    for (double t = 0.0; t <= 1.0; t += 0.01) {
+        auto point = recursive_bezier(control_points, t);
+        window.at<cv::Vec3b>(point.y, point.x)[1] = 255;
+    }
+}
+```
+
+
 
