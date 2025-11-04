@@ -31,3 +31,10 @@ head:
 
 
 我嘞个100mb大小限制啊。。。之后还是传b站然后引链接吧。。。。
+
+## 11.04
+最离谱的一集。
+<video controls width="100%">
+  <source src="/536106d80c8dac80aa37cbb3b878391d.mp4" type="video/mp4">
+
+</video>
