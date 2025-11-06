@@ -457,4 +457,6 @@ void bezier(const std::vector<cv::Point2f> &control_points, cv::Mat &window)
 ```
 
 
+## 11.05
 
+不是，我又去听了一些课，是我的数学功底实在是太烂了吗...感觉听到曲线后面那块有些吃力，以及应该找点代码配合看看（嗯。。。。
