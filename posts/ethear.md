@@ -559,7 +559,8 @@ head:
 
 ## 牵连组番外
 ## 仿 入间人间
-!蛉·results of machine determinism
+
+蛉·results of machine determinism
 
 怜.1
 
