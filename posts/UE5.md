@@ -155,10 +155,7 @@ mix...字母太长我不记得了，总而言之你是我爹啊。。。。
 
 之前探索进度是把oc的灰模从comyfui里面弄出来，简单maxmimo弄了个绑定（maximo你是我爹），
 
-<video controls width="100%">
-  <source src="/2025-11-09 17-01-52.mp4" type="video/mp4">
-您的浏览器不支持 video 标签。
-</video>
+
 
 
 昨天就正好弄到这一块了，简单的划出地形和把oc放进去。本来想说的是
