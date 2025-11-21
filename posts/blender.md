@@ -84,3 +84,9 @@ head:
   <source src="/2025-11-20 23-37-20.mp4" type="video/mp4">
 您的浏览器不支持 video 标签。
 </video>
+
+
+。。。半夜又去捏了两件衣服。。。
+![](/119019042de37dc64e08094699331122.webp)
+
+![](/93b0d6da2e549b4c7990cf5f9d0bc94d.webp)
