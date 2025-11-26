@@ -460,3 +460,43 @@ void bezier(const std::vector<cv::Point2f> &control_points, cv::Mat &window)
 ## 11.05
 
 不是，我又去听了一些课，是我的数学功底实在是太烂了吗...感觉听到曲线后面那块有些吃力，以及应该找点代码配合看看（嗯。。。。
+
+
+## 11.12
+
+
+看我我最近搞ue5貌似搞得确实挺上头的...
+
+
+但是立刻就回来写了！（啊？
+
+
+记录的话...觉得对games101的学习策略可能稍作调整emm...尝试从源码开始一点点啃着看起。
+
+
+比如render.cpp开头
+
+```cpp
+Vector3f reflect(const Vector3f &I, const Vector3f &N)
+{
+    return I - 2 * dotProduct(I, N) * N;
+}
+```
+
+是反射公式，i是入射方向，n是法线（而且貌似i的方向得是...就不是挨着n出发点那种传统光路图（？因为中间是减号而不是加号？（手推的话发现如此emm....
+
+
+```cpp
+Vector3f refract(const Vector3f &I, const Vector3f &N, const float &ior)
+{
+    float cosi = clamp(-1, 1, dotProduct(I, N));
+    float etai = 1, etat = ior;
+    Vector3f n = N;
+    if (cosi < 0) { cosi = -cosi; } else { std::swap(etai, etat); n= -N; }
+    float eta = etai / etat;
+    float k = 1 - eta * eta * (1 - cosi * cosi);
+    return k < 0 ? 0 : eta * I + (eta * cosi - sqrtf(k)) * n;
+}
+```
+
+此是折射（。救命看着依然很吃力，只是了解了一些语法。                                                                                                                                                                                                                                                                        

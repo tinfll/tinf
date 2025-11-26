@@ -2,7 +2,7 @@
   <div class="post-banner" v-show="state.currPost.title">
     <h1 class="title">{{ state.currPost.title }}</h1>
     <span class="status"
-      >发布于
+      >更新于
       {{
         Intl.DateTimeFormat('zh-CN', {
           year: 'numeric',
