@@ -325,3 +325,36 @@ Result = (A * (1 - Alpha)) + (B * Alpha)
 
 
 很难蚌。。。乐
+
+
+## 12.01
+
+赶紧抓紧时间写
+
+
+之前打算做demo然后那个教室pbr渲染材质，蚌啊，这是之前写废掉的一个pbr漫反射材质（当时在研究substrate然后就没有然后。
+
+
+<video controls width="100%">
+  <source src="/2025-11-28 19-10-38.mp4" type="video/mp4">
+您的浏览器不支持 video 标签。
+</video>
+
+
+等等我把我高中教室照片贴出来等会，太幽默了。
+
+
+
+<video controls width="100%">
+  <source src="/2025-12-01 13-27-40.mp4" type="video/mp4">
+您的浏览器不支持 video 标签。
+</video>
+
+
+我真觉得做三年动画的人很厉害.jpg
+2025-12-01 13-27-40.mp4
+
+
+
+未来打算研究方向
+头发建模和头发骨骼，眼睛（待研究，主要前面。
