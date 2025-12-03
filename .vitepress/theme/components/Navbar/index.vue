@@ -60,6 +60,10 @@ const handleNavClick = (url: string) => {
     resetPage()
     state.currTag = ''
   }
+  // 点击遗世时重置标签和页码
+  if (url === 'ethers/') {
+    resetPage()
+  }
 }
 </script>
 
