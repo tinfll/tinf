@@ -17,9 +17,6 @@
   content: "\e76a";
 }
 
-.icon-qq:before {
-  content: "\e76c";
-}
 
 .icon-coolapk:before {
   content: "\E760";
@@ -29,9 +26,6 @@
   content: "\e76d";
 }
 
-.icon-wechat:before {
-  content: "\e775";
-}
 
 .icon-arrow:before {
   content: "\e604";
@@ -53,9 +47,6 @@
   content: "\e761";
 }
 
-.icon-tw:before {
-  content: "\e773";
-}
 
 .icon-weibo:before {
   content: "\e776";
@@ -79,4 +70,40 @@
 
 .icon-time:before {
   content: "\E778";
+}
+
+.icon-discord {
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  background-image: url("../icon/discord-line.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: -0.129em;
+  font-size: inherit; /* 继承父元素字体大小 */
+}
+
+.icon-x {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-image: url("../icon/x.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: -0.125em;
+  font-size: inherit; /* 继承父元素字体大小 */
+}
+
+.icon-网易云音乐 {
+  display: inline-block;
+  width: 1.3em;
+  height: 1.3em;
+  background-image: url("../icon/网易云音乐.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: -0.125em;
+  font-size: inherit; /* 继承父元素字体大小 */
 }

@@ -77,7 +77,8 @@ export default defineConfigWithTheme<ThemeConfig>({
     menuList: [
       { name: 'Main', url: '' },
       { name: 'Tags', url: 'tags/' },
-      { name: '3D', url: 'ethers/' },
+      { name: 'TA', url: 'ta/' },
+      { name: 'ethers', url: 'ethers/' },
     ],
 
     //banner区配置
@@ -88,8 +89,9 @@ export default defineConfigWithTheme<ThemeConfig>({
     social: [
       { icon: 'github', url: 'https://github.com/tinfll' },
       { icon: 'bilibili', url: ' https://b23.tv/zUV6qLv' },
-      { icon: 'qq', url: 'https://im.qq.com/index/' },
-      { icon: 'wechat', url: 'https://weixin.qq.com/' },
+      { icon: 'discord', url: 'https://discord.gg/BWeKDcHx' },
+      { icon: 'x', url: 'https://x.com/tinf1234/' },
+      { icon: '网易云音乐', url: 'https://y.music.163.com/m/user?id=1451336139' },
     ],
 
     //spine语音配置，可选zh/jp

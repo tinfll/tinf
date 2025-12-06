@@ -1,7 +1,7 @@
 ---
 title: My Best Friends
 date: 2025-10-23
-tags: [oc]
+tags: [oc,ethers]
 head:
   - - meta
     - name: oc

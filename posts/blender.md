@@ -1,7 +1,7 @@
 ---
-title: blender-Modeling
+title: blender
 date: 2025-12-04
-tags: [3d Modeling]
+tags: [3d Modeling,TA]
 head:
   - - meta
     - name: blender
