@@ -1,6 +1,6 @@
 ---
-title: blender捣鼓
-date: 2025-11-21
+title: blender-Modeling
+date: 2025-12-04
 tags: [3d Modeling]
 head:
   - - meta
@@ -11,7 +11,7 @@ head:
       content: tinf
 ---
 
-记录blender智障摸索
+Record Blender Process
 
 ---
 
