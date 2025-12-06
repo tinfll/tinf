@@ -120,6 +120,11 @@ const finalPosts = computed(() => {
     return posts
   } else if (page.value.filePath === 'tags/index.md') {
     return state.selectedPosts
+  } else if (page.value.filePath === 'ethers/index.md') {
+    // 返回筛选出的 ethers 文章
+    return posts.filter(post => 
+      post.tags && post.tags.includes('ethers')
+    )
   }
   return []
 })

@@ -1,7 +1,7 @@
 ---
 title: blender捣鼓
 date: 2025-11-21
-tags: [blender,oc,3d]
+tags: [3d Modeling]
 head:
   - - meta
     - name: blender

@@ -75,9 +75,9 @@ export default defineConfigWithTheme<ThemeConfig>({
   themeConfig: {
     // navBar
     menuList: [
-      { name: '首页', url: '' },
-      { name: '标签', url: 'tags/' },
-      { name: '遗世', url: 'ethers/' }
+      { name: 'Main', url: '' },
+      { name: 'Tags', url: 'tags/' },
+      { name: '3D', url: 'ethers/' },
     ],
 
     //banner区配置

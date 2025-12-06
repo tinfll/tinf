@@ -1,7 +1,7 @@
 ---
 title: plan...摆烂...？
 date: 2025-11-21
-tags: [tinf]
+tags: [其他]
 head:
   - - meta
     - name: plan

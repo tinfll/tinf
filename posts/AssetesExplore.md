@@ -1,7 +1,7 @@
 ---
 title: AssetesExplore
 date: 2025-11-02
-tags: [live2d, 遗世]
+tags: [其他]
 head:
   - - meta
     - name: live2d

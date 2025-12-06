@@ -1,7 +1,7 @@
 ---
 title: Games101
 date: 2025-11-04
-tags: [games101, c++, 图形学]
+tags: [c++, 图形学]
 head:
   - - meta
     - name: perspective

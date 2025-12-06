@@ -7,12 +7,15 @@
         <transition name="fade" mode="out-in">
           <WelcomeBox v-if="!state.splashLoading && page.filePath === 'index.md'"></WelcomeBox>
           <Tags v-else-if="page.filePath === 'tags/index.md'"></Tags>
+          <Ethers v-else-if="page.filePath === 'ethers/index.md'"></Ethers>
           <PostInnerBanner v-else></PostInnerBanner>
         </transition>
       </Banner>
       <transition name="fade" mode="out-in">
         <PostsList
-          v-if="page.filePath === 'index.md' || page.filePath === 'tags/index.md'"
+          v-if="page.filePath === 'index.md' || 
+                page.filePath === 'tags/index.md' || 
+                page.filePath === 'ethers/index.md'"
         ></PostsList>
         <PostViewer v-else></PostViewer>
       </transition>
@@ -37,6 +40,7 @@ import Banner from './components/Banner.vue'
 import WelcomeBox from './components/Welcome-Box.vue'
 import PostsList from './components/Posts-List.vue'
 import Tags from './components/Tags.vue'
+import Ethers from './components/ethers.vue'
 import PostViewer from './components/Post-Viewer.vue'
 import PostInnerBanner from './components/Post-InnerBanner.vue'
 import NotFound from './components/NotFound.vue'

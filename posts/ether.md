@@ -1,7 +1,7 @@
 ---
 title: My Best Friends
 date: 2025-10-23
-tags: [遗世,oc]
+tags: [oc]
 head:
   - - meta
     - name: oc

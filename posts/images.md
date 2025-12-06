@@ -1,7 +1,7 @@
 ---
 title: Images
 date: 2025-10-25
-tags: [仟虹]
+tags: [其他]
 head:
   - - meta
     - name: description

@@ -1,7 +1,7 @@
 ---
 title: 遗世
 date: 2025-10-24
-tags: [遗世]
+tags: [oc]
 head:
   - - meta
     - name: novel
