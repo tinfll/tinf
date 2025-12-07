@@ -1,6 +1,6 @@
 ---
 title: blender-Modeling
-date: 2025-12-04
+date: 2025-12-06
 tags: [3d Modeling,TA]
 head:
   - - meta
@@ -30,6 +30,12 @@ I tried using a cube to split the curls, but the effect was poor. It's better to
 </video>
 
 
+## 12.06
+
+just tried to imitate Chen Qianyu's hairstyle, but the result wasn't as ultimately comfortable as hers.
+
+![](image7.webp)
 
 
+Some hair should be carved out with strips. I’ll practice drawing it properly in the next few water classes.
 
