@@ -19,7 +19,6 @@ import { useStore } from '../../store'
 
 const { state } = useStore()
 const dropdownMenu = ref<HTMLElement | null>(null)
-
 const handleClickOutside = (event: MouseEvent) => {
   const target = event.target as HTMLElement
   const hamburgerEl = document.querySelector('.hamburger')

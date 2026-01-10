@@ -1,7 +1,7 @@
 ---
 title: ue5-Gameplay
 date: 2025-12-05
-tags: [ue5,3DCG]
+tags: [ue5,3DCG,TA]
 head:
   - - meta
     - name: UE5

@@ -502,4 +502,61 @@ Vector3f refract(const Vector3f &I, const Vector3f &N, const float &ior)
 此是折射（。看着依然很吃力，只是了解了一些语法。                                                                                                                                                                                                                                                                        
 ## 12.21
 （不是），（有点好笑）
-我尝试回忆下我一个月前在写什么顺便记录下推导然后万一我又去玩ue和blender一发不可收拾还能回来回忆（。
+我尝试回忆下我一个月前在写什么顺便记录下推导然后万一我又去玩ue和blender一发不可收拾还能回来回忆
+
+```cpp
+bool rayTriangleIntersect(const Vector3f& v0, const Vector3f& v1, const Vector3f& v2, const Vector3f& orig,
+                          const Vector3f& dir, float& tnear, float& u, float& v)
+{
+    // TODO: Implement this function that tests whether the triangle
+    // that's specified bt v0, v1 and v2 intersects with the ray (whose
+    // origin is *orig* and direction is *dir*)
+    // Also don't forget to update tnear, u and v.
+    Vector3f lit = orig + tnear * dir;
+    Vector3f x0 = v1 - v0; 
+    Vector3f x1 = v2 - v0;
+    Vector3f s0 = orig - v0;
+
+    Vector3f s1 = crossProduct(dir, x1);
+    Vector3f s2 = crossProduct(s0, s1);
+    
+    float divisor = dotProduct(s1, x0);
+	if (fabs(divisor) < 1e-8)
+		return false;
+
+	float invDivisor = 1.0f / divisor;
+
+	u = dotProduct(s1, s0) * invDivisor;
+	if (u < 0 || u > 1)
+		return false;
+
+	v = dotProduct(s2, dir) * invDivisor;
+	if (v < 0 || u + v > 1)
+		return false;
+
+	tnear = dotProduct(s2, x1) / divisor;
+
+	return tnear >= 0;
+}
+```
+
+射线方程：P = orig + t * dir
+三角形上任意点（用重心坐标表示）：P = v0 + u*(v1-v0) + v*(v2-v0)
+
+orig + t*dir = v0 + u*(v1-v0) + v*(v2-v0)
+
+orig - v0 = -t*dir + u*(v1-v0) + v*(v2-v0)
+S0 = orig - v0
+x1 = v1 - v0
+x2 = v2 - v0
+
+-t*dir + u*x1 + v*x2 = S0
+
+[-dir, x1, x2] * [t, u, v]ᵀ = S0
+
+设系数矩阵 M = [-dir, x1, x2]，我们要解 M·[t, u, v]ᵀ = S0
+t = det([S0, x1, x2]) / det(M)
+u = det([-dir, S0, x2]) / det(M) 
+v = det([-dir, x1, S0]) / det(M)
+
+想起来当初是尝试到这里来着

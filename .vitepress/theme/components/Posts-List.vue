@@ -125,8 +125,7 @@ const finalPosts = computed(() => {
     return posts.filter(post => 
       post.tags && post.tags.includes('ethers')
     )
-  }
-  else if (page.value.filePath === 'TA/index.md') {
+  } else if (page.value.filePath === 'ta/index.md') {
     return posts.filter(post => 
       post.tags && post.tags.includes('TA')
     )
