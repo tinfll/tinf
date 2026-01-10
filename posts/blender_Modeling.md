@@ -34,7 +34,7 @@ I tried using a cube to split the curls, but the effect was poor. It's better to
 
 just tried to imitate Chen Qianyu's hairstyle, but the result wasn't as ultimately comfortable as Arknights: Endfield.
 
-![](image7.webp)
+![](/image7.webp)
 
 
 Some hair should be carved out with strips. I’ll practice drawing it properly in the next few water classes.
