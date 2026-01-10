@@ -47,8 +47,3 @@ Some hair should be carved out with strips. I’ll practice drawing it properly 
 
 
 
-<video controls width="100%">
-  <source src="/2025-12-09 00-03-11.mp4" type="video/mp4">
-您的浏览器不支持 video 标签。
-</video>
-
