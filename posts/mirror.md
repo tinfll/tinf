@@ -181,6 +181,7 @@ alphaTest(rgba中a)/Depth Buffer Test/stencil Test(那我之前有个镜子实�
 - 目标缓冲区：。frame buffer（帧缓冲区，所以这个就是真·屏幕空间是吗？）
 或者RT，贴图好理解。
 
+GPU粒子？
 
 
 
@@ -205,5 +206,48 @@ tmd我tm都还没起步都
 
 但我还要去研究blender的pcg程序化生成和ue5的bim数字孪生渲染展示，rvt模型那块应付一些东西
 
+。期末考试去死。
+
+Discrete Fourier Transform(DFT)
+Fast Fourier Transform
+Cooley-Tukey algorithm
+Cascade
 
 
+volume cloud
+ray marching
+void raymarchv1_float( float3 rayOrigin, float3 rayDirection, float numSteps, float stepSize,
+                     float densityScale, float4 Sphere, out float result )
+{
+	float density = 0;
+	
+	for(int i =0; i< numSteps; i++){
+		rayOrigin += (rayDirection*stepSize);
+					
+		//Calculate density
+		float sphereDist = distance(rayOrigin, Sphere.xyz);
+
+		if(sphereDist < Sphere.w){
+			density += 0.1;
+        }
+					
+	}
+
+	result = density * densityScale;
+}
+
+SDF
+Beer-Lambert Law
+$$T(r) = e^{-\int_0^r \sigma_t(x) dx}$$
+
+$$P(\theta) = \frac{1-g^2}{4\pi(1+g^2-2g\cos\theta)^{3/2}}$$使用两层不同速度的 Noise 进行叠加，模拟云的生灭
+samplePos += windDirection * time
+
+
+[unitysurfaceshader](https://learn.unity.com/tutorial/creating-a-surface-shader)
+
+[gerstner-waves]https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/gerstner-waves-in-the-presence-of-mean-currents-and-rotation/D1637DFDCF881149488A8A9162C509E3
+
+[Trochoidal wave](https://en.wikipedia.org/wiki/Trochoidal_wave)
+
+[volumeRenderingTechiniques]https://developer.nvidia.com/gpugems/gpugems/part-vi-beyond-triangles/chapter-39-volume-rendering-techniques
