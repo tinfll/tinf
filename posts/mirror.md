@@ -244,10 +244,290 @@ $$P(\theta) = \frac{1-g^2}{4\pi(1+g^2-2g\cos\theta)^{3/2}}$$使用两层不同�
 samplePos += windDirection * time
 
 
-[unitysurfaceshader](https://learn.unity.com/tutorial/creating-a-surface-shader)
+打家具做纹理。
+为什么连自己名字都不会读。。
+。为什么前端程序员会来讲纹理。。。
 
-[gerstner-waves]https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/gerstner-waves-in-the-presence-of-mean-currents-and-rotation/D1637DFDCF881149488A8A9162C509E3
+纹理是什么？：一种可供着色器读写的结构化存储形式
+image[height][width][4]
+T[512][512][4](rgba)
 
-[Trochoidal wave](https://en.wikipedia.org/wiki/Trochoidal_wave)
+。你妈的开头两分钟你在说绕口令呢我去。。？你tm纯表达问题啊我靠了。
+原话:"我们拿比较常见二维纹理作为一个例子的话，二维纹理就是宽 高然后你想要储存的信息 假如说是rgba值来构造一个三维的数组的话，它i和j对应的，刚好图像上那一个像素点，然后k(?????)代表的这一个像素点上面的那一个RGBA值或者是你想要储存的信息，那我们就可以从这里推断出一维纹理，它实际就是i = 0 或 j = 0的一种二维数组。"
 
-[volumeRenderingTechiniques]https://developer.nvidia.com/gpugems/gpugems/part-vi-beyond-triangles/chapter-39-volume-rendering-techniques
+。所以合着你那个k指的是三层for循环这个意思是吗。？我看到这里才发现前面说的不是r和g而是i和j。。
+。
+。
+一句话概括 i j 宽高 k rgba值或height/纹理通道/法线 三维纹理是二维子对象构成四维数组。
+
+纹理采样设置后面再说。？？。
+纹理 牺牲几何细节 减少建模工作量 减少存储空间 提高读取速度
+纹理是模拟物体表面的技术（是吧。
+
+纹理管线:
+object space location -> projection(uv展uv,存储在顶点数据中，特殊情况渲染方式逐像素评估 环境贴图，什么球形圆柱形投影(纹理映射)。？) -> corresponder ->texture space location ->(通讯函数uv.?) value obtain (获取纹理值就是纹理采样) -> tecture value (着色器纹理一sample varible采样器变量形式存在就是代码中sample。？貌似记得unity里面之前写过啥。 uniform类型。处理片元时变量不变。)-> value transform function -> transformed texture value
+
+二维纹理sampler2d 依赖纹理读取:像素着色器不是通过顶点着色器传过来而是计算得来会产生然后影响性能。
+大部分实时渲染通过lookup函数的方式来索引值但是也有程序纹理，不是内存查找而是函数计算。
+
+获取uv位置与分辨率纹理相乘，后面获取具体纹素颜色就与纹理采样设置决定，纹理采样设置包含在纹理对象之中
+warp mode: 决定uv值在[0,1]意外的表现
+opengl 包装模式 -- wrapping model
+directx 纹理寻址模式 texture addressing mode
+repeat mirror clamp border
+
+filter mode:因为变换产生拉伸时要采取哪一种滤波来调整自身表现。
+纹理大小完全相同可能会有旋转吗，这样对齐啥还是需要过滤。。？(不同角度缩放比)
+纹理过滤是在专门硬件或软件中都可完成。
+放大magnification 最近邻(像素化，每一个像素会读取最近1个纹素，消耗很省) 
+双线性插值(找到四个周围点然后线性插值计算) 
+P(u, v) = (81.92, 74.24)
+-(0.5, 0.5) = (81.42, 73.74)
+最临近四个像素点范围是(81, 73)-(82, 74)
+相对于该四个像素中心形成的坐标系的位置(u', v') = (0.42, 0.74)
+插值颜色 = (1-0.42)*(1-0.74) * t(x,y) + 0.42*(1-0.74)*t(x+1,y) + (1-0.42) * 0.74 * t(x,y + 1) + 0.42*0.74*t(x+1,y+1)
+解决了不连续性但只有四个点
+
+
+立方卷积 考虑到变化率影响。p(x+u, y+v)点就是对应点(x, y)对应在目标图像的位置，双立方差值就是通过bicubic基函数得到目标像素点周围的16个相邻像素目标像素点P的影响因子。公式一坨看着像高数卷子上的。
+
+Quilez的光滑曲线插值(中和)
+s(x) = x^2(3- 2x)(经典smoothstep。) and q(x) = x^3(6*x^2 - 15x + 10)(没见过但是叫quintic的东西。)
+就是把uv处理成u'和v'进行处理。
+
+纹理缩小
+几个纹理一个像素
+缩小的最近邻与双线性插值 
+颜色丢失和闪烁
+
+屏幕100 * 100 采样一张2048 * 2048
+当(u,v) = (0.2, 0.6)时，会采样(409.6, 1228.8)浮点数运算
+=(0.21,0.61)时会采样(430.08,1249.28)然后就20多个像素。。我好像在哪见过这个问题来着。。。
+
+mipmap 每个像素最多有一个纹理来避免混点，提高像素采样频率 
+降低纹理频率:mipmap 预处理纹理创建数据结构快速计算一组纹素对一个像素的效果的近似值。金字塔
+2*2 4个相邻纹理的平均值作为下一级新的纹素值(。我好像也不是很清楚纹素是什么。)新一级子纹理是上一级1/4大。重复到顶尖纹理是1*1。整套纹理比纹理多了1/3内存。没有计算过程。
+。。。。不是。。。。我想骂人了。你这个mipmap介绍的。。。？？？？顶尖纹理是1*1,1*1啥啊1*1像素吗什么东西那这样纹理越来越小吗？2048*2048y压缩到1*1吗这个意思然后运用到100*100吗？。啥意思啊我靠。
+
+mipmap选择正确level满足采样定理。
+```cs
+float dx = ddx(i.uv);
+float dy = ddy(i.uv);用顶点着色器传来的uv和ddx和ddy这两api算出(x,y)偏导数
+
+float lod = 0.5 * log2(max(dot(dx, dx), dot(dy, dy)));
+自点乘后作为边长平方得出最长边再开发作为level。(。。。什么神奇勾股定理。？。约定俗称的凑数字？。此lod为一个数字)
+float3 albedo = tex2Dlod(_MainTex, float4(i.uv, 0, lod)).rgb;
+
+```
+天书对话:使用像素单元格所形成一个四边形最长边近似像素范围，四边形两条边用偏导求
+gpu把pivel 2*2分组并行执行 为了算ddx和ddy以及发现。
+dFdx(p(x,y)) = (p(x+1, y) - p(x,y))/1.0
+dFdx(p(x,y)) = (p(x, y+1) - p(x,y))/1.0
+这里dx为1.不需要p(x+1,y+1)
+
+静态来看块与块有点不平滑，动态看纹理切换有不同level 三插值来解决，在做一遍双线性过滤，最接近mipmaplevel双线性过滤。
+
+mipmap 不需要实时累加纹素只需要访问预处理就可，不论level多少过程一样。
+内存+但是消耗带宽小。只要传输小的那一张图即可
+
+mipmap 过度模糊(overblur)假设texture投射过去各向同性。
+
+如果一个像素单元格u方向纹理多v方向纹素少，一些被平均纹素产生各向异性过滤。
+。又开始语言跳脱了。你他妈说的能连成一个句子吗。。。？？？
+ripmap 各种比例矩形异处理。
+。我的想法：不能美术解决吗。？。一个手机相册拉伸剪辑的事情。
+
+EWA过滤 用椭圆近似 多次查询加权平均数。
+
+各向异性过滤:积分图summed area table 
+idm一个和纹理大小相同但颜色精度更高的数组 左上(0,0)为纹素原点。
+"每一个位置计算并存储这个位置和纹素原点形成的剧情所对应的所有纹理的纹素的总和"。
+。哥们。你在说什么。
+average = (LR-UR-LL+UL)/W*H
+
+。气笑了。感觉这位前端工程师已经沉浸在自己的艺术里了。(看图。我不知道你在算什么。)
+
+任意四个点对任意剧情内部纹素平均值进行一个快速运算。然后此是SAT。
+
+。神秘算法后越靠右下角数值越大。
+。games101课忘了。
+什么remap纹理各向异性过滤之后纹理内存
+
+好的那么临场提问
+1.unity里面的sampler2D如何把你上面学的理论串联起来？（。？关联在？
+2.tex2D？
+```
+sampler2D _MainTex; // Declare the texture sampler
+
+float4 frag(v2f i) : SV_Target {
+float2 uv = i.uv; // UV coordinates
+float4 color = tex2D(_MainTex, uv); // Sample the texture
+return color; // Output the sampled color
+}
+```
+依旧有SamplerState Sampler_等
+
+
+
+
+视觉小说里面纹理压缩方法貌似把一些相同纹理整合在一起。
+[ducedSpriteCharacter](https://github.com/elringus/sprite-dicing)
+。你在写什么拼好饭笔记。？
+
+我发现我好像可以偷代码下来
+
+
+
+
+所以。各向异性过滤可以单开一个
+
+kajiya-kay 毛发渲染
+。原来这玩意有自己的名字啊...
+
+怜头发需要去准备texture
+
+lightmode meta不知道什么会寄，并不知道为什么要用universalforward
+
+标记Transform 管线 NDC clip 你又忘了是吗。所以以及和后面法线转就都没看懂。
+float3 aldedo = _Albedo.rgb * tex2D(_AlbedoMap, fragment.uv).rgb;
+。。。神奇原来中间是乘法吗。？。
+代入了下1 1 1 1貌似就是。行吧。
+
+。
+写不动就直接复制粘贴吗，哈基草你这家伙
+```hlsl
+// 采样参数
+float3 albedo = tex2D(_MainTex, uv).rgb * _Color.rgb;
+float metallic = _Metallic;
+float smoothness = _Glossiness;
+
+// 计算法线
+float3 normal = UnpackNormal(tex2D(_BumpMap, uv));
+
+// 计算视角、光照方向
+float3 viewDir = normalize(_WorldSpaceCameraPos - worldPos);
+float3 lightDir = normalize(_WorldSpaceLightPos0.xyz);
+
+// Cook-Torrance BRDF
+float3 F0 = lerp(0.04, albedo, metallic);
+float3 F = FresnelSchlick(F0, dot(viewDir, halfDir));
+float D = DistributionGGX(normal, halfDir, roughness);
+float G = GeometrySmith(normal, viewDir, lightDir, roughness);
+
+float3 numerator = D * F * G;
+float denominator = 4 * max(dot(normal, viewDir), 0) * max(dot(normal, lightDir), 0) + 0.001;
+float3 specular = numerator / denominator;
+
+// 最终颜色
+float3 kD = (1 - F) * (1 - metallic);
+float3 diffuse = kD * albedo / PI;
+
+float3 color = (diffuse + specular) * lightColor * NdotL;
+```
+
+CGPROGRAM
+HLSLPROGRAM。。。。？何区别。。。？
+
+...我貌似不能很能理解positionWS采的是TEXCOORD0 然后uv采的是TEXCOORD1。(fragment里面)
+Vextex里面uv去采TEXCOORD0去了。
+在 Vertex 结构体中：语义告诉 GPU 从模型资源（Mesh）的哪个缓冲区读取数据。
+
+
+
+我又要把blinnphong搬出来吗
+...处理基础属性的方式还不一样
+float metalic = _Metallic * tex2D(_MetallicMap, fragment.uv).r;
+//float metalic = saturate(max(_Metalness + EPS, tex2D(_MetallicMap, fragment.uv)).r);
+
+貌似可以把那个积分公式搬过来然后对着公式敲也行，，，吧。
+
+float smoothness = 1 - sqrt(_RoughnessMap * tex2D(_RoughnessMap, fragment.uv).r);
+.实际直接1-也行
+
+之后能量守恒等核心部分
+
+float dielectricSpec = 0.04;
+float3 diffuse = lerp(albedo * (1 - dielectricSpec), 0, metallic);
+float3 specular = lerp(dielectricSpec, albedo, metallic);
+(不是很能理解.?)
+
+光照物理 菲涅尔
+//光照物理：菲涅尔
+specular = lerp(specular, grazingTerm, pow(1 - saturate(dot(normal, v)), 4));
+
+//URP 支持最多 1盏主光源 + 8盏附加光源
+
+
+...我觉得这api纷繁复杂之我如何锻炼能力？
+就是明白原理后自己写，然后遇到哪个api不会自己去查？（查完接着忘，然后只有重复写这个过程才用的熟练？吗）
+
+shader寄存器资源宝贵，内存浪费
+
+function linearstep( a: Number, b: Number, t: Number ): Number
+  return saturate( ( t - a ) / ( b - a ) )
+end function
+
+let shading: Number = dot( N, L )
+shading = shading + shadingShiftFactor
+shading = shading + texture( shadingShiftTexture, uv ) * shadingShiftTexture.scale
+shading = linearstep( -1.0 + shadingToonyFactor, 1.0 - shadingToonyFactor, shading )
+
+let baseColorTerm: ColorRGB = baseColorFactor.rgb * texture( baseColorTexture, uv ).rgb
+let shadeColorTerm: ColorRGB = shadeColorFactor.rgb * texture( shadeMultiplyTexture, uv ).rgb
+
+let color: ColorRGB = lerp( shadeColorTerm, baseColorTerm, shading )
+color = color * lightColor
+
+//Ambient
+Light mainLight;
+mainLight = GetMainLight();
+float3 ml  = albedo * mainLight.color;
+finalColor = ml;
+int c = GetAdditionalLightsCount();
+for(int i = 0; i < c; ++i) {
+    Light addLight = GetAdditionalLight(i, fragment.positionWS);
+    finalColor += addLight.color * albedo;
+}
+
+计算漫反射需要法向量但是法向量信息储存在normalmap里..?
+
+菲涅尔数学形式
+$$F(\theta) = F_0 + (1 - F_0)(1 - \cos\theta)^5$$
+近似: return F0 + (1.0 - F0) * pow(clamp(1.0 - cosTheta, 0.0, 1.0), 5.0);
+unity: specular = lerp(specular, grazingTerm, pow(1 - saturate(dot(normal, v)), 4));
+(lerp)
+
+固定会去计算tanentMatrix...? 
+
+float3x3 tangentMatrix = transpose(float3x3(i.tangent, i.bitangent, i.normal));
+
+CGPROGRAM
+float D = trowbridgeReitzNDF(NdotH, roughness);
+            D = trowbridgeReitzAnisotropicNDF(NdotH, roughness, _Anisotropy, HdotT, HdotB);
+            float3 F = fresnel(F0, NdotV, roughness);
+            float G = schlickBeckmannGAF(NdotV, roughness) * schlickBeckmannGAF(NdotL, roughness);
+
+HLSLPROGRAM：
+//光照物理：能量守恒、双向反射分布
+				float3 diffuse = lerp(albedo * (1 - dielectricSpec), 0, metallic);
+				float3 specular = lerp(dielectricSpec, albedo, metallic);
+				//光照物理：菲涅尔
+				specular = lerp(specular, grazingTerm, pow(1 - saturate(dot(normal, v)), 4));
+
+$$h = \frac{l + v}{||l + v||}$$
+
+Direct Light (直接光)：计算 DFG 时，通常用 $H \cdot V$ 或 $H \cdot L$。
+IBL / Environment Reflection (环境反射)
+
+反射率方程，然后树状往下延伸(是。)
+。。。回头整合笔记吧目前很乱了属于是
+然后就可以挖光追和路线追踪的大坑(。)
+pbr流程，自发光，计算物体本身有材质属性(固定一套即可。) 光线统计
+
+物体本身一套：BRDF
+BRDF blinn-phong/cook-Torrance
+D F G
+
+。手游写pbr方法和端游不一样。？。
+
+kd * f{diffuse} + ks * f{specular}

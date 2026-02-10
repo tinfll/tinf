@@ -62,3 +62,8 @@ something...
   <source src="/e14c607b35c71109767160fc81a565b6.mp4" type="video/mp4">
 您的浏览器不支持 video 标签。
 </video>
+
+J_Bip_C_UpperChest spine_03
+J_Sec_L_Bust1
+J_Sec_L_Bust3
+J_Sec_L_Bust4
