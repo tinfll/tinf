@@ -174,15 +174,18 @@ typedef mat<3, 3, float> Matrix3;
 。秽土转生了。
 顶点缓冲对象(Vertex Buffer Objects, VBO)管理这个内存，它会在GPU内存（通常被称为显存）中储存大量顶点。使用这些缓冲对象的好处是我们可以一次性的发送一大批数据到显卡上，而不是每个顶点发送一次。从CPU把数据发送到显卡相对较慢，所以只要可能我们都要尝试尽量一次性发送尽可能多的数据。当数据发送至显卡的内存中后，顶点着色器几乎能立即访问顶点，这是个非常快的过程。
 。
-顶点数组对象：Vertex Array Object，VAO
+
+```cpp
+//顶点数组对象：
+Vertex Array Object，VAO
 Vec4f v;
 ss >> v.x >> v.y >> v.z;
 v.w = 1.0f;
 verts_.push_back(v);？
-顶点缓冲对象：Vertex Buffer Object，VBO
+//顶点缓冲对象：Vertex Buffer Object，VBO
 Vec4f gl_Vertex = { v.x, v.y, v.z, 1.0f };
-元素缓冲对象：Element Buffer Object，EBO 或 索引缓冲对象 Index Buffer Object，IBO
-。qmhsV<int> fs;
-。虽然貌似是之前写的qmhs[].verts/faces等一堆。所以你之前不写gl。。？，，。。
-
+//元素缓冲对象：Element Buffer Object，EBO 或 索引缓冲对象 Index Buffer Object，IBO
+qmhsV<int> fs;
+//虽然貌似是之前写的qmhs[].verts/faces等一堆。所以你之前不写gl。。？，，。。
+```
 
