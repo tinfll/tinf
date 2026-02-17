@@ -1,8 +1,7 @@
 ---
 title: tinyrenderer
 date: 2026-01-12
-tags: [声明]
-pinned: true
+tags: [c++]
 head:
   - - meta
     - name: tip

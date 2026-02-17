@@ -2,7 +2,6 @@
 title: shader
 date: 2026-01-12
 tags: [shader]
-pinned: true
 head:
   - - meta
     - name: tip
