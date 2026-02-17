@@ -218,7 +218,7 @@ onMounted(() => {
   height: 50vh;
 }
 
-.bg-img {
+/*.bg-img {
   background-image: url(../assets/banner/banner.webp);
   html[theme='dark'] & {
     background-image: url(../assets/banner/banner_dark.webp), url(../assets/banner/banner.webp);
@@ -229,9 +229,10 @@ onMounted(() => {
   height: 100%;
   background-size: cover;
   background-position: center center;
-  filter: var(--img-brightness); /* 添加亮度过滤器 */
-  transition: filter 0.5s, background-image 0.5s; /* 添加过渡效果 */
-}
+  filter: var(--img-brightness);
+  transition: filter 0.5s, background-image 0.5s; 
+}*/
+
 
 .bg-video {
   position: absolute;

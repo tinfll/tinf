@@ -1,4 +1,4 @@
----
+/---
 title: My Best Friends
 date: 2025-10-23
 tags: [oc,ethers]
@@ -12,7 +12,7 @@ head:
     
 ---
 
-本篇用于记录系魂们(冒着死亡风险)
+打算
 
 ---
 

@@ -12,7 +12,11 @@ head:
       content: tinf
 ---
 
+tinyrenderer
+
 ---
+
+
 
 f v/vt/vn。 这就是工业标准：顶点索引 / UV索引 / 法线索引。
 

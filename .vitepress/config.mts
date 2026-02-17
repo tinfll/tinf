@@ -2,6 +2,11 @@ import { defineConfigWithTheme } from 'vitepress'
 // @ts-ignore
 import mdItCustomAttrs from 'markdown-it-custom-attrs'
 export interface ThemeConfig {
+  repo: string
+  owner: string
+  admin: string[]
+  outline?: 'deep' | number[]
+
   //navBar
   menuList: { name: string; url: string }[]
 
@@ -19,12 +24,7 @@ export interface ThemeConfig {
   footerName: string
   poweredList: { name: string; url: string }[]
 
-  //gitalk
-  clientID: string
-  clientSecret: string
-  repo: string
-  owner: string
-  admin: string[]
+
 }
 
 export default defineConfigWithTheme<ThemeConfig>({
@@ -113,6 +113,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     theme: 'solarized-dark',
     lineNumbers: true,
     math: true,
+    headers: {level: [2, 3, 4] },
     config: (md) => {
       // use more markdown-it plugins!
       md.use(mdItCustomAttrs, 'image', {

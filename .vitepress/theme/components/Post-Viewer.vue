@@ -1,9 +1,30 @@
 <template>
-  <div class="view-box container">
-    <content class="content" />
-    <Gitalk v-if="themeConfig.clientID"></Gitalk>
+  <div class="page-container">
+    
+    <aside class="toc-wrapper" v-if="page.headers && page.headers.length > 0">
+      <div class="toc-content">
+        <h3 class="toc-title">目录</h3>
+        <nav>
+          <ul>
+            <li v-for="h in page.headers" :key="h.slug" :class="'toc-level-' + h.level">
+              <a :href="'#' + h.slug">{{ h.title }}</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
   </div>
+
+  <ShaderBackground /> <div class="page-container">
+    <aside class="toc-wrapper">...</aside>
+    <div class="view-box container">...</div>
+    </div>
+<div class="view-box container">
+  <Content class="content" />
+  <Gitalk v-if="themeConfig.clientID"></Gitalk>
+</div>
 </template>
+
 <script setup lang="ts">
 import Gitalk from './Gitalk.vue'
 import { data as posts } from '../utils/posts.data'
@@ -14,6 +35,9 @@ const data = useData()
 const base = data.site.value.base
 const { state } = useStore()
 import { onMounted, onUnmounted, watch } from 'vue'
+import ShaderBackground from './ShaderBackground.vue'
+
+const { page } = useData()
 
 function getCurrpost() {
   let currPost = posts.findIndex((p) => p.href === route.path.replace(base, ''))
@@ -59,6 +83,45 @@ const themeConfig = useData().theme.value
   box-shadow: 0px 0px 8px rgb(var(--blue-shadow-color), 0.8);
   transition: opacity 0.5s ease-out, transform 1s cubic-bezier(0.61, 0.15, 0.26, 1), border 0.5s,
     background 0.5s, box-shadow 0.5s;
+  flex: 1;
+  min-width: 0;
+
+}
+//outline
+.toc-wrapper {
+  position: sticky;
+  top: 40px;
+  width: 240px;
+  flex-shrink:0;
+  padding: 16px;
+  border-left: 20px solid var(--foreground-color);
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+
+  .toc-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: 8px;
+    &.toc-level-3 { padding-left: 16px; font-size: 0.9em; } 
+    &.toc-level-4 { padding-left: 32px; font-size: 0.8em; } 
+  }
+
+  a {
+    color: var(--font-color);
+    text-decoration: none;
+    font-size: 14px;
+    &:hover { color: #5cd3ff; }
+  }
 }
 
 .content {

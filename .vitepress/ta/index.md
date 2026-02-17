@@ -1,4 +1,4 @@
 ---
 title:ta
-layout: page
+layout:page
 ---

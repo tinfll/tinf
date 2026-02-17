@@ -30,12 +30,13 @@
       </div>
     </transition>
   </div>
+  <ShaderBackground /> <div class="page-container"></div>
 </template>
 
 <script setup lang="ts">
 import { useData } from 'vitepress'
 import { ref, onMounted } from 'vue'
-
+import ShaderBackground from './ShaderBackground.vue'
 const themeConfig = useData().theme.value
 const name = themeConfig.name
 const welcomeText = themeConfig.welcomeText
