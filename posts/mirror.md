@@ -265,7 +265,7 @@ T[512][512][4](rgba)
 纹理是模拟物体表面的技术（是吧。
 
 纹理管线:
-object space location -> projection(uv展uv,存储在顶点数据中，特殊情况渲染方式逐像素评估 环境贴图，什么球形圆柱形投影(纹理映射)。？) -> corresponder ->texture space location ->(通讯函数uv.?) value obtain (获取纹理值就是纹理采样) -> tecture value (着色器纹理一sample varible采样器变量形式存在就是代码中sample。？貌似记得unity里面之前写过啥。 uniform类型。处理片元时变量不变。)-> value transform function -> transformed texture value
+object space location -> projection(uv展uv,存储在顶点数据中，特殊情况渲染方式逐像素评估 环境贴图，什么球形圆柱形投影(纹理映射)。？) -> corresponder ->texture space location ->(通讯函数uv.?) value obtain (获取纹理值就是纹理采样) -> texture value (着色器纹理一sample varible采样器变量形式存在就是代码中sample。？貌似记得unity里面之前写过啥。 uniform类型。处理片元时变量不变。)-> value transform function -> transformed texture value
 
 二维纹理sampler2d 依赖纹理读取:像素着色器不是通过顶点着色器传过来而是计算得来会产生然后影响性能。
 大部分实时渲染通过lookup函数的方式来索引值但是也有程序纹理，不是内存查找而是函数计算。
