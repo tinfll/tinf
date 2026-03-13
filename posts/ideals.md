@@ -1,7 +1,7 @@
 ---
 title: 一些灵感
 date: 2025-11-09
-tags: [其他]
+tags: [ethers]
 head:
   - - meta
     - name: 灵感

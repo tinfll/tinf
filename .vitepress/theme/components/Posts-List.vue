@@ -117,18 +117,14 @@ function formatDate(timestamp: number): string {
 // 文章传值
 const finalPosts = computed(() => {
   if (page.value.filePath === 'index.md') {
-    return posts
+    // Hide ethers-tagged posts from the main list
+    return posts.filter(post => !post.tags || !post.tags.includes('ethers'))
   } else if (page.value.filePath === 'tags/index.md') {
     return state.selectedPosts
   } else if (page.value.filePath === 'ethers/index.md') {
-    // 返回筛选出的 ethers 文章
-    return posts.filter(post => 
-      post.tags && post.tags.includes('ethers')
-    )
+    return state.selectedPosts  // controlled by ethers.vue (empty when locked)
   } else if (page.value.filePath === 'ta/index.md') {
-    return posts.filter(post => 
-      post.tags && post.tags.includes('TA')
-    )
+    return posts.filter(post => post.tags && post.tags.includes('TA'))
   }
   return []
 })

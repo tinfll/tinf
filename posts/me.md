@@ -1,7 +1,7 @@
 ---
 title: About 葶风
 date: 2025-10-25
-tags: [其他]
+tags: [ethers]
 pinned: true
 head:
   - - meta

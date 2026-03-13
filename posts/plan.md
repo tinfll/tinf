@@ -1,7 +1,7 @@
 ---
 title: plan...摆烂...？
 date: 2025-12-19
-tags: [其他]
+tags: [ethers]
 head:
   - - meta
     - name: plan

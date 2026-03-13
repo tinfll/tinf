@@ -24,7 +24,7 @@ export interface ThemeConfig {
   footerName: string
   poweredList: { name: string; url: string }[]
 
-
+  ethersPassword?: string
 }
 
 export default defineConfigWithTheme<ThemeConfig>({
@@ -73,6 +73,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   title: "Welcome to the Ethearl",
   description: "葶风看月",
   themeConfig: {
+    ethersPassword: '0',
     // navBar
     menuList: [
       { name: 'Main', url: '' },

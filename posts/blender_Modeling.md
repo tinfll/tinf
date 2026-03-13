@@ -1,7 +1,7 @@
 ---
 title: blender-Modeling
 date: 2025-12-06
-tags: [3d Modeling,TA,blender]
+tags: [ethers]
 head:
   - - meta
     - name: blender

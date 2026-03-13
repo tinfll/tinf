@@ -1,6 +1,6 @@
 ---
 title: tinyrenderer
-date: 2026-01-12
+date: 2026-03-13
 tags: [c++]
 head:
   - - meta
@@ -50,6 +50,10 @@ Mtest3d << rcos(?n), 0 , 0
 cosθ， 0， -sinθ,
 0，    1,   0,
 sinθ, 0, cosθ
+
+
+...我在写什么？
+
 
 ```cpp
 template<size_t DimCols, size_t DimRows, typename T> class mat;
@@ -189,3 +193,30 @@ qmhsV<int> fs;
 //虽然貌似是之前写的qmhs[].verts/faces等一堆。所以你之前不写gl。。？，，。。
 ```
 
+....放置一个寒假竟然救活了。
+渲染管线后仍旧玄学的是线代(摄像机等)
+```cpp
+void tinfgl::lookat(const Vec3f eye, const Vec3f center, const Vec3f up) {
+    Vec3f n = (eye - center).normalize();
+    Vec3f l = (cross(up, n)).normalize();
+    Vec3f m = (cross(n, l)).normalize();
+    modelv = Matrix4f{ l.x,l.y,l.z,0.0f, m.x,m.y,m.z,0.0f, n.x,n.y,n.z,0.0f, 0.0f,0.0f,0.0f,1.0f } *
+        Matrix4f{1,0,0,-center.x,  0,1,0,-center.y , 0,0,1,-center.z , 0,0,0,1 };
+}
+
+void tinfgl::init_perspective(const float f) {
+    perspo = { 1, 0 ,0, 0,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            0, 0, -1/f, 1 };
+}
+
+void tinfgl::init_viewport(const int x, const int y, const int width, const int height) {
+    viewp = { width / 2.0f, 0, 0, x+width / 2.0f,
+        0, height / 2.0f, 0, y+height / 2.0f,
+        0, 0, 1, 0,
+        0, 0, 0, 1 };
+}
+```
+
+$L_o(x, \omega_o) = L_e(x, \omega_o) + \int_{\Omega} f_r(x, \omega_i, \omega_o) L_i(x, \omega_i) (\omega_i \cdot n) d\omega_i$

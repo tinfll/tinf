@@ -1,7 +1,7 @@
 ---
 title: 琐事
 date: 2025-11-26
-tags: [其他]
+tags: [ethers]
 
 head:
   - - meta
