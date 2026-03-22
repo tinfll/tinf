@@ -195,7 +195,7 @@ blender k by hand now
 
 so inefficient way with my weak animation knowlegde
 
-(and VN dont seemed to need this)
+(and VN dont seem to need this)
 ...trying to improve
 
 ### Face layers
