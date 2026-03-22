@@ -17,7 +17,8 @@ tinyrenderer
 
 
 
-f v/vt/vn。 这就是工业标准：顶点索引 / UV索引 / 法线索引。
+## model load
+f v/vt/vn。 obj标准：顶点索引 / UV索引 / 法线索引。
 
 3/1/1 意思是：这个三角形的第一个角，使用第 3 号顶点，第 1 号 UV，第 1 号法线。
 
@@ -55,6 +56,9 @@ sinθ, 0, cosθ
 ...我在写什么？
 
 
+## math lib
+
+其实甚至还没更新，因为还没研究到
 ```cpp
 template<size_t DimCols, size_t DimRows, typename T> class mat;
 
@@ -136,9 +140,7 @@ public:
     }
 };
 
-// =========================================================================
-// 矩阵运算 (Matrix Operations)
-// =========================================================================
+
 
 template<size_t DimRows, size_t DimCols, typename T>
 vec<DimRows, T> operator*(const mat<DimRows, DimCols, T>& lhs, const vec<DimCols, T>& rhs) {
@@ -164,7 +166,7 @@ mat<DimRows, DimCols, T> operator/(mat<DimRows, DimCols, T> lhs, const T& rhs) {
     return lhs;
 }
 
-// 类型别名
+
 typedef vec<2, float> Vec2f;
 typedef vec<3, float> Vec3f;
 typedef vec<4, float> Vec4f;
@@ -193,6 +195,34 @@ qmhsV<int> fs;
 //虽然貌似是之前写的qmhs[].verts/faces等一堆。所以你之前不写gl。。？，，。。
 ```
 
+## draw Bxxx line
+```cpp
+void line(int ax, int ay, int bx, int by, TGAImage& framebuffer, TGAColor color) {
+    bool steep = std::abs(ax - bx) < std::abs(ay - by);
+    if (steep) {
+        std::swap(ax, ay);
+        std::swap(bx, by);
+    }
+    if (ax > bx) {
+        std::swap(ax, bx);
+        std::swap(ay, by);
+    }
+    int y = ay;
+    int ie = 0;
+    for (int x = ax; x <= bx; x++) {
+        if (steep)    framebuffer.set(y, x, color);
+        else    framebuffer.set(x, y, color);
+        ie += 2 * std::abs(by - ay);
+        if (ie > bx - ax) {
+            y += (by > ay) ? 1 : -1;
+            ie -= 2 * (bx - ax);
+        }
+    }
+}
+```
+
+
+## MVP
 ....放置一个寒假竟然救活了。
 渲染管线后仍旧玄学的是线代(摄像机等)
 ```cpp
@@ -221,15 +251,15 @@ void tinfgl::init_viewport(const int x, const int y, const int width, const int 
 
 $L_o(x, \omega_o) = L_e(x, \omega_o) + \int_{\Omega} f_r(x, \omega_i, \omega_o) L_i(x, \omega_i) (\omega_i \cdot n) d\omega_i$
 
-之后可以加曾经的光照模型以及乱七八糟等....
-补了面向对象语法等....
+
+## OOP
 struct Eth {
     int Transform;
     void move() { cout << "This one comes from Eth" << endl; }
     virtual void attack();
 };
 
-struct Introream : public Eth {  // : 表示继承
+struct Introream : public Eth {  // : inherit
     int wheels = 4;
     void hello() { cout << "hello, i come from Introream" << endl; }
 };
@@ -249,9 +279,107 @@ X blud；
 blud.Transform = 0.0;
 blud.hello();
 
-。
-太好了，我现在整个人脑子就跟他妈的一坨浆糊一样。
-。我都不知道自己要他妈干嘛。
-我最想干的事情是直接睡觉睡死睡到遗世那边去， gameover。
-。
-抛开此不说，我现在又想博客里面开一个密码空间，把一些md放进去。
+
+## vrm model/blender obj some prefab....
+```cpp
+ Model::VertexData vd = model.faces_[iface][nthvert];
+
+ Vec4f v = (vd.id >= 0 && vd.id < model.verts_.size())
+     ? model.verts_[vd.id]
+     : Vec4f(0.0f, 0.0f, 0.0f, 1.0f);
+
+ Vec4f vn = (vd.n >= 0 && vd.id < model.vertsN_.size())
+     ? model.vertsN_[vd.n]
+     : Vec4f(0.0f, 0.0f, 1.0f, 0.0f);
+
+ Vec4f uv = (vd.t >= 0 && vd.t < model.vertsT_.size())
+     ? model.vertsT_[vd.t]
+     : Vec4f(0.0f, 0.0f, 0.0f, 0.0f);
+ // no better solutions so.....
+```
+
+
+note that uv(y-axis is opposite)
+```cpp
+//sample the albedo
+int tex_x = std::max(0, std::min(Albedo.width() - 1, static_cast<int>(uv.x * Albedo.width())));
+int tex_y = std::max(0, std::min(Albedo.height() - 1, static_cast<int>((1.0f - uv.y) * Albedo.height())));
+//vroid hub textures uv.y / obj
+```
+
+
+## phong
+
+```cpp
+  Vec3f V = ( P - cameraPos).normalize();
+  float cosineA = dot(N, L);//diffuse
+  float diffuse = cosineA;
+  Vec3f R = 2 * N * cosineA - L;
+  float specular = std::pow(std::max(0.0f, dot(R, V)), 32.0f);
+
+  float ambient = 0.1f;
+  float diffuseTerm = 0.6f;
+  float i = ambient + diffuse * 0.6f + specular * 0.3f;
+  TGAColor basecolor = Albedo.get(tex_x, tex_y);
+  TGAColor specularColor = white;
+
+  TGAColor finColor = {
+      static_cast<unsigned char>(std::clamp(basecolor[0] * i, 0.0f, 255.0f)),
+      static_cast<unsigned char>(std::clamp(basecolor[1] * i, 0.0f, 255.0f)),
+      static_cast<unsigned char>(std::clamp(basecolor[2] * i, 0.0f, 255.0f)),
+      255
+  };
+
+```
+
+
+
+## TBN
+
+```cpp
+virtual std::pair<bool, TGAColor> fragment(const Vec3f bar) const{
+    mat<3, 2, float> e;
+    mat<2, 2, float> u;
+    mat<3, 2, float> tb;
+    mat<3, 3, float> TBN;
+    Vec3f P1 = Vec3f(PV[1][0] - PV[0][0], PV[1][1] - PV[0][1], PV[1][2] - PV[0][2]);
+    Vec3f P2 = Vec3f(PV[2][0] - PV[0][0], PV[2][1] - PV[0][1], PV[2][2] - PV[0][2]);
+    e = { P1.x, P2.x, 
+          P1.y, P2.y, 
+          P1.z, P2.z };
+
+    Vec2f U1 = Vec2f(UV[0][1] - UV[0][0], UV[1][1] - UV[1][0]);
+    Vec2f U2 = Vec2f(UV[0][2] - UV[0][0], UV[1][2] - UV[1][0]);
+    u = { U1.x, U2.x, 
+          U1.y, U2.y };
+
+    // ....manually invert the 2x2 UV matrix
+    float det = U1.x * U2.y - U2.x * U1.y;
+    mat<2, 2, float> u_inv;
+    u_inv[0][0] = U2.y / det;
+    u_inv[0][1] = -U2.x / det;
+    u_inv[1][0] = -U1.y / det;
+    u_inv[1][1] = U1.x / det;
+
+    tb = e * u_inv;//through some linear algebra transformation
+
+    Vec3f P = Vec3f(PV * bar);
+    Vec3f N = Vec3f(NV * bar).normalize();
+    Vec2f uv = UV * bar;
+
+    //sample the normal
+    int NM_x = std::max(0, std::min(NM.width() - 1, static_cast<int>(uv.x * NM.width())));
+    int NM_y = std::max(0, std::min(NM.height() - 1, static_cast<int>((1.0f - uv.y) * NM.height())));
+    Vec3f n = { NM.get(NM_x, NM_y).bgra[2] / 255.f * 2.f - 1.f, 
+                NM.get(NM_x, NM_y).bgra[1] / 255.f * 2.f - 1.f, 
+                NM.get(NM_x, NM_y).bgra[0] / 255.f * 2.f - 1.f };
+
+
+    Vec3f T = Vec3f(tb[0][0], tb[1][0], tb[2][0]).normalize();
+    Vec3f B = Vec3f(tb[0][1], tb[1][1], tb[2][1]).normalize();
+    TBN = { T.x, B.x, N.x,
+            T.y, B.y, N.y,
+            T.z, B.z, N.z };
+
+    N = (TBN * n).normalize();
+```

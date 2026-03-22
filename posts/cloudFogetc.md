@@ -15,6 +15,8 @@ head:
 
 ---
 
+$$f(P) = \max(|x+y|-z, |x-y|+z, |y+z|-x, |z+x|-y) \cdot \frac{1}{\sqrt{3}}$$
+
 lattice based noise
 value noise
 linear rnd
