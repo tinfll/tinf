@@ -1,7 +1,7 @@
 ---
 title: USTC_GC_25
 date: 2025-11-16
-tags: [USTC_GC_25, c++, 图形学]
+tags: [ethers]
 head:
   - - meta
     - name: perspective

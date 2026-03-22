@@ -1,7 +1,7 @@
 ---
 title: vrchat
 date: 2026-02-03
-tags: [vrchat]
+tags: [ethers]
 head:
   - - meta
     - name: perspective

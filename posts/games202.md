@@ -15,6 +15,8 @@ Games202学习过程
 
 ---
 
+
+al
 this.material.uniforms[k].type == 'texture'
 
 

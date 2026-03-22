@@ -1,6 +1,7 @@
 import { defineConfigWithTheme } from 'vitepress'
 // @ts-ignore
 import mdItCustomAttrs from 'markdown-it-custom-attrs'
+import { linearToneMapping } from 'three/tsl'
 export interface ThemeConfig {
   repo: string
   owner: string
@@ -86,11 +87,11 @@ export default defineConfigWithTheme<ThemeConfig>({
     videoBanner: false,
     name: "葶风看月",
     welcomeText: 'Welcome to the Ethearl',
-    motto: ['hello, This is tingfeng(tinf too), a freshman who love computer graphics/Psychology/Art, also an OC/OCworld creator '],
+    motto: ['hello, This is tingfeng(tinf too), a freshman who love computer graphics/Psychology/Art, also an OC/OCworld creator.Im learing some low-level graphic and engine knowledge for now, and I have learned some vroid2blender2unity(like my indie game or vrchat avatar/map making and so on).Im happy if you have ideas to share with me as follows my connect ways'],
     social: [
       { icon: 'github', url: 'https://github.com/tinfll' },
       { icon: 'bilibili', url: ' https://b23.tv/zUV6qLv' },
-      { icon: 'discord', url: 'https://discord.gg/BWeKDcHx' },
+      { icon: 'discord', url: 'https://discord.gg/6Gs49cZs' },
       { icon: 'x', url: 'https://x.com/tinf1234/' },
       { icon: '网易云音乐', url: 'https://y.music.163.com/m/user?id=1451336139' },
     ],

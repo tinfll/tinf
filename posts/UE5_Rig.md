@@ -1,7 +1,7 @@
 ---
 title: ue5-Rigs
 date: 2025-12-05
-tags: [ue5,3DCG,TA]
+tags: [ue5]
 head:
   - - meta
     - name: UE5
@@ -45,7 +45,6 @@ But I'm considering Modular Binding,etc.Now I found that many "automatically doi
 </video>
 
 
-"天与云与山与水，上下一白" --《湖心亭看雪》
 The sky, the clouds, the mountains, and the water—all are blanketed in white from top to bottom.
 
 
