@@ -87,7 +87,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     videoBanner: false,
     name: "葶风看月",
     welcomeText: 'Welcome to the Ethearl',
-    motto: ['hello, This is tingfeng(tinf too), a freshman who love computer graphics/Psychology/Art, also an OC/OCworld creator.Im learing some low-level graphic and engine knowledge for now, and I have learned some vroid2blender2unity(like my indie game or vrchat avatar/map making and so on).Im happy if you have ideas to share with me as follows my connect ways'],
+    motto: ['hello, This is tingfeng(tinf too), a freshman who love computer graphics/Psychology/Art, also an OC/OCworld creator.Writing some soft rasterization now... some hobby about vroid2blender2unity(like my indie VN or vrchat avatar/map making and so on).Im so happy if you have ideas to share with me as follows'],
     social: [
       { icon: 'github', url: 'https://github.com/tinfll' },
       { icon: 'bilibili', url: ' https://b23.tv/zUV6qLv' },
