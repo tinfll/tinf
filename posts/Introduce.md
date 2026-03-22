@@ -1,7 +1,7 @@
 ---
-title: 零散介绍
+title: 草稿
 date: 2026-03-01
-tags: [其他]
+tags: [ethers]
 head:
   - - meta
     - name: description
@@ -23,10 +23,6 @@ head:
 - 各类关键帧
 - 骨骼动画
 
-<video controls width="100%">
-  <source src="/2026-03-01 19-45-36.mp4" type="video/mp4">
-您的浏览器不支持 video 标签。
-</video>
 
 如果想要短视频制作需要类似剧本？
 以及是否需要周围环境生成
@@ -37,11 +33,6 @@ head:
 
 # ue5内置渲染
 
-
-<video controls width="100%">
-  <source src="/2026-03-01 19-35-08.mp4" type="video/mp4">
-您的浏览器不支持 video 标签。
-</video>
 
 ## 程序化生成周围环境
 
@@ -55,10 +46,7 @@ head:
 2026-03-01 20-05-12.mp4
 
 
-<video controls width="100%">
-  <source src="/2026-03-01 20-05-12.mp4" type="video/mp4">
-您的浏览器不支持 video 标签。
-</video>
+
 
 ## unity vrchat sdk导入
 build完后可以直接戴头显进vrchat世界游玩
