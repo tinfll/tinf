@@ -86,7 +86,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     videoBanner: false,
     name: "葶风看月",
     welcomeText: 'Welcome to the Ethearl',
-    motto: ['徘徊在梦境的边缘'],
+    motto: ['hello, This is tingfeng(tinf too), a freshman who love computer graphics/Psychology/Art, also an OC/OCworld creator '],
     social: [
       { icon: 'github', url: 'https://github.com/tinfll' },
       { icon: 'bilibili', url: ' https://b23.tv/zUV6qLv' },

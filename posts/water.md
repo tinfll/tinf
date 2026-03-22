@@ -1,7 +1,7 @@
 ---
 title: water
 date: 2026-01-21
-tags: [图形学]
+tags: [computer graphic]
 head:
   - - meta
     - name: perspective

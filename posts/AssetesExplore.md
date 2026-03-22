@@ -1,7 +1,7 @@
 ---
 title: AssetesExplore
 date: 2025-11-02
-tags: [其他]
+tags: [ethers]
 head:
   - - meta
     - name: live2d

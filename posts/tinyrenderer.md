@@ -220,3 +220,38 @@ void tinfgl::init_viewport(const int x, const int y, const int width, const int 
 ```
 
 $L_o(x, \omega_o) = L_e(x, \omega_o) + \int_{\Omega} f_r(x, \omega_i, \omega_o) L_i(x, \omega_i) (\omega_i \cdot n) d\omega_i$
+
+之后可以加曾经的光照模型以及乱七八糟等....
+补了面向对象语法等....
+struct Eth {
+    int Transform;
+    void move() { cout << "This one comes from Eth" << endl; }
+    virtual void attack();
+};
+
+struct Introream : public Eth {  // : 表示继承
+    int wheels = 4;
+    void hello() { cout << "hello, i come from Introream" << endl; }
+};
+
+struct X : public Eth {
+    int wings = 2;
+    void hello() { cout << hello, i come from X" << endl; }
+};
+
+// 使用
+Introream xdyp;
+xdyp.Transform = 3.1; 
+xdyp.hello();
+xdyp.move();
+
+X blud；
+blud.Transform = 0.0;
+blud.hello();
+
+。
+太好了，我现在整个人脑子就跟他妈的一坨浆糊一样。
+。我都不知道自己要他妈干嘛。
+我最想干的事情是直接睡觉睡死睡到遗世那边去， gameover。
+。
+抛开此不说，我现在又想博客里面开一个密码空间，把一些md放进去。

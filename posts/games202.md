@@ -88,7 +88,7 @@ converlution shadowmapping(cast？)
 (。顶级空耳。)
 
 shadowmapping算法
-积分没听懂。
+
 visible shading没听懂
 。其实我本来对自己积分还挺自信的。。
 记一下吧，point/directional lighting
@@ -108,7 +108,7 @@ from hard shadows to soft shadows
 。。。？？逻辑貌似和我相反？🈚我觉得硬阴影是软阴影的极端化处理？(step等？)算了正反逻辑都一样。
 
 软硬阴影类似美术效果……哎不是吗？(印象中卡渲是绘制sdf贴图来着做形状叠加)
-等还有球面阴影这种东西？
+等还有球面阴影这
 percentage closer soft shadow
 blocker search
 。。听的时候开始走神于是。。。于是相似三角形那边w不知道。。？

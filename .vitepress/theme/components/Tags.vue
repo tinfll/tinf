@@ -38,10 +38,13 @@ const setTag = (tag: string) => {
 
   window.history.pushState({}, '', url.toString())
 }
+// 隐藏 ethers 标签及其文章
+const HIDDEN_TAGS = ['ethers']
 
 for (const post of posts) {
   if (!post.tags) continue
   for (const tag of post.tags) {
+    if (HIDDEN_TAGS.includes(tag)) continue  // 跳过 ethers
     if (!tagData[tag]) tagData[tag] = []
     tagData[tag].push(post)
   }

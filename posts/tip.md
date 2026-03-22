@@ -1,5 +1,5 @@
 ---
-title: 说明
+title: Declaration
 date: 2025-10-24
 tags: [声明]
 pinned: true
@@ -12,6 +12,10 @@ head:
       content: tinf
 ---
 
+声明
+
+---
+
 ## 关于主题
 
 本项目基于 [Alittfre/vitepress-theme-bluearchive](https://github.com/Alittfre/vitepress-theme-bluearchive) 主题构建，特此感谢原作者的创作。
@@ -20,6 +24,9 @@ head:
 
 - 主题设计：© Alittfre
 - 博客内容：© tinf
+
 ---
+
+
 
 

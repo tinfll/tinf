@@ -25,7 +25,7 @@ const { state } = useStore()
   justify-content: center;
   align-items: center;
   color: var(--post-InnerBanner-color);
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 0 5px rgb(253, 251, 141);
   z-index: 100;
   transition: color 0.5s;
 

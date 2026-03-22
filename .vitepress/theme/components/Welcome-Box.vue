@@ -11,8 +11,9 @@
       <div
         class="info-box"
         :style="{
-          background: `linear-gradient(${angle}deg, var(--infobox-background-initial), var(--infobox-background-final))`,
+          background: `linear-gradient(${angle}deg, rgba(255,255,255,0.75), rgba(220,235,255,0.6))`,
         }"
+      >
       >
         <img @dragstart.prevent src="../assets/banner/avatar.webp" alt="" class="avatar" />
         <span class="name">{{ name }}</span>
@@ -116,6 +117,8 @@ onMounted(() => {
 }
 
 .info-box {
+  opacity: 1;
+  color: #000000;
   display: flex;
   flex-direction: column;
   align-items: center;
