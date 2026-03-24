@@ -1,7 +1,7 @@
 ---
 title: tinyrenderer
 date: 2026-03-13
-tags: [c++]
+tags: [tinyrenderer]
 head:
   - - meta
     - name: tip
@@ -15,9 +15,28 @@ tinyrenderer
 
 ---
 
+## the CORE (i perceive): 
+
+
+(1)vertex shader: model(M in MVP) * v(->world position)(include N,L...(oppsite to the world))
+
+ztest/rasterization: after whole P * V * M (unity has various kinds of tests...)
+
+after barycenter:a has been calculated, then fragment shader(bar a)(still use the data of world(1)) 
+
+shadowmap share the same algorithm(modelL from the light perspective(directional light iso while point light perspo))
+
+
+![](/image11.webp)
+
+
+
+SO ABOVE THIS JUST SOME Nonsense :)
+
 
 
 ## model load
+
 f v/vt/vn。 obj标准：顶点索引 / UV索引 / 法线索引。
 
 3/1/1 意思是：这个三角形的第一个角，使用第 3 号顶点，第 1 号 UV，第 1 号法线。
@@ -46,7 +65,7 @@ Mtest3d << rcos(?n), 0 , 0
            0,    , 0 , rsin(?n)
 这里问号是我也敲不准拿什么符号表示。
 
-。。。。好吧发现前面完全理解错了。。。
+
 θ。
 cosθ， 0， -sinθ,
 0，    1,   0,
@@ -223,6 +242,7 @@ void line(int ax, int ay, int bx, int by, TGAImage& framebuffer, TGAColor color)
 
 
 ## MVP
+
 ....放置一个寒假竟然救活了。
 渲染管线后仍旧玄学的是线代(摄像机等)
 ```cpp
