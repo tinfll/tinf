@@ -10,7 +10,6 @@ head:
     - name: keywords
       content: live2d
 ---
-
 ABC
 This page is documenting some develop process about ABC(yet dont have name:)
 
@@ -19,38 +18,27 @@ This page is documenting some develop process about ABC(yet dont have name:)
 A:(as follow is the newest but not the last:)
 
 
-<video controls width="100%">
-  <source src="/test11.mp4" type="video/mp4">
-您的浏览器不支持 video 标签。
-</video>
-
-
 ## render pipelne about urp
+
 So i want to share the render plan in my indie game....(thinking...even though i dont regard it as an 'indie game')
 
 ### 2.5D performance1(used planes to multiply):
 
 the main scene:
+
 + full screnn render feature (renderer3D)
-+ background(RT,transparent,queue = 3000-2) 
-+ character(toonshader + custom RT filter transparent,queue = 3000-1) 
-+ FX layer(plane transparent queue = 3000) 
++ background(RT,transparent,queue = 3000-2)
++ character(toonshader + custom RT filter transparent,queue = 3000-1)
++ FX layer(plane transparent queue = 3000)
 
 all process is animated available to achieve the performance(with naninovel frame, and I try to learn that, too.)
 (but I think it seemed to be over...?)
 
 at the same time I am exploring some new postprocess, too.(But time and efficiency push some stress on me:)
 
-
-
-
-
-
 basically naninovel and urp, but I take the 3D asset(character from Vroid then blender to handle further)
 
 and so there is still some performance trick about various useing methods of render texture...etc(please ignore my poor language skill...)
-
-
 
 #### pencil / draft(learn from camerafilterpackage)
 
@@ -69,9 +57,9 @@ and so there is still some performance trick about various useing methods of ren
     // the texture.r is base texture
     //  .g is mask(...dont like this much, can custom)
     //  **.b** is motion controller
-    
+  
     float3 paper2 = SAMPLE_TEXTURE2D(_MainTex2, sampler_MainTex2, uv + dist).rgb;
-    
+  
     tex2[0] = SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_BlitTexture, i.uv + float2(tex, 0) + dist / 128.0);
     tex2[1] = SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_BlitTexture, i.uv + float2(-tex, 0) + dist / 128.0);
     tex2[2] = SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_BlitTexture, i.uv + float2(0, tex) + dist / 128.0);
@@ -97,16 +85,15 @@ and so there is still some performance trick about various useing methods of ren
     float origLuma = dot(f.rgb, float3(0.2126, 0.7152, 0.0722));
     float darkShading = saturate(1.0 - origLuma);
     ax = saturate(ax + darkShading * 0.8);
-    
+  
     paper = lerp(float3(paper.r, paper.r, paper.r), _PColor2.rgb, _Value6); 
     paper = lerp(paper, _PColor.rgb, ax * _Value3);
     paper -= pg * 0.5;
     paper = lerp(f.rgb, paper, _Value7);
-    
+  
     //still could add some sigmodal to increase the contrast
     return float4(paper, 1.0);
 ```
-
 
 #### RTfilter(to stimulate the black and white edge with the painter algorithm)
 
@@ -116,7 +103,7 @@ float getneighboralpha(float2 uv, float2 offset)
             float a1 = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv + float2(-offset.x, offset.y)).a;
             float a2 = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv + float2(0, offset.y)).a;
             float a3 = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv + float2(offset.x, offset.y)).a;
-            
+          
             float a4 = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv + float2(-offset.x, 0)).a;
             float a5 = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv + float2(offset.x, 0)).a;
 
@@ -158,7 +145,6 @@ float getneighboralpha(float2 uv, float2 offset)
         }
 ```
 
-
 #### toon shader(learn from unity toon)
 
 lerp
@@ -167,12 +153,14 @@ normal outline(I hate this)
 rimcolor with mask(I like this)
 
 face / liuhai
+
 + stencil NO:2
 + comparison: always
 + pass: replace
 + fail: keep
 
 eyeline/brown:
+
 + stencil NO:2
 + comparison: always
 
@@ -181,11 +169,7 @@ still bugs...I try to figure out some better ways to achieve the perfect angle
 (this photo do NOT adjust the toon shader yet)
 (but i like it)
 
-
-
-### some 3D render 
-
-
+### some 3D render
 
 ## Animate system
 
@@ -205,8 +189,6 @@ some bugs conflict with render pipeline
 1.mouth rim light with .b pass
 so need to back to render pipeline to set mouth material apart(denote just a little ripple)
 
-
-
-### other customed animate 
+### other customed animate
 
 ## naninovel's command lines
