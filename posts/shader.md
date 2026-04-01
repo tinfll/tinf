@@ -11,9 +11,11 @@ head:
       content: tinf
 ---
 
-
+shader
 
 ---
+
+$$f(P) = \max(|x+y|-z, |x-y|+z, |y+z|-x, |z+x|-y) \cdot \frac{1}{\sqrt{3}}$$
 
 uv = fragCoord / iResolution.xy
 。
