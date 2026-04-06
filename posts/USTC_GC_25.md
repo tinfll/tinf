@@ -1,7 +1,7 @@
 ---
 title: USTC_GC_25
-date: 2025-11-16
-tags: [ethers]
+date: 2026-04-01
+tags: [C++]
 head:
   - - meta
     - name: perspective
@@ -11,40 +11,58 @@ head:
       content: tinf
 ---
 
-用于记录USTC_GC_25学习
+record
 
 ---
 
-## 10.30
 
-先来学cmake的？）
+This is just to stash.Ignore it. 
 
-
-## 11.13
-博客，，忘写，，，
-
-
-课程属于过了半个月才下定决心去推（！嗯。
+<video controls width="100%">
+  <source src="/output.mp4" type="video/mp4">
+您的浏览器不支持 video 标签。
+</video>
 
 
-然后去配了framework2d的cmakelist（苦，cmake宝宝你是一个小蛋糕，虽然依然是结合ai和自己半吊子的理解。
 
 
-## 11.14
 
-感觉自己什么也做不到。
-
-
-。。。
+## data structure
 
 
-其实也实现了很多了。嗯。再努力？
+Arrays give you O(1) access by index — `m_pData[i]` goes directly to the right memory address. No searching needed.
+
+Dynamic Array
+
+2 methods
+
+m_nMax or not
+
+### double new [m_nSize]
+
+get at O(1)/
+
+insert at / push_back / delete O(n) 
+
+the core logic: 
+
++ assign new pData
++ copy from old m_pData
++ delete old m_pData
++ m_pData = pData
 
 
-## 11.15
-是谁给我的决心：数学知识为0，库调用知识为0，硬啃imgui库，硬写ellipse和polygon（后者还失败了）然后又和ai杠上了死活蚌。
-其实实现出来画画椭圆效果挺好的。。。。感觉自己的项目能力飞增。。。至少不是拿到项目大脑空空的状态...
+### m_nMax
 
+get at / push_back O(1)
+rest O(n)
 
-## 11.16
-虽然今天还没去调polygon的bug，但是回旋镖打回来了属于是（感觉现在看文档和写ue5的c++项目的能力要好很多了。。？？
+core logic :
+
++ size management : reserve(m_nSize + 1 / nIndex) 
+
+use 2 * m_nSize
+assert has different boundary checks
+
+template
+

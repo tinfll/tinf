@@ -11,9 +11,6 @@ head:
       content: tinf
 ---
 
-
----
-
 dailyshader
 
 ---
