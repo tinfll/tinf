@@ -1,7 +1,7 @@
 ---
 title: dailyshader
 date: 2026-03-29
-tags: [shader]
+tags: [ethers]
 head:
   - - meta
     - name: tip
@@ -10,45 +10,32 @@ head:
     - name: tip
       content: tinf
 ---
-
 dailyshader
 
 ---
 
 # Daily Shader Practice Roadmap
 
-> 从"能写 shader"到"能用 shader 表达想法"的 8 周训练计划（含色彩理论穿插）
-> 平台：Shadertoy (GLSL) 为主 | Unity URP (HLSL) 穿插实战
-> 🎨 标记 = 该练习融入色彩理论知识点
-> 前置技能：SDF 基础、UV 操作、基本 noise、光照模型、法线贴图、MatCap、Sobel 边缘检测
+> persist....
 
----
+## Cheer up!
 
-## 如何使用这份路线
-
-- **每天 1 个练习**，建议 20-40 分钟，先自己写再对答案
-- 标记 `[S]` = Shadertoy GLSL，`[U]` = Unity URP HLSL
-- 标记 `★` = 可以做成作品集级别的完整效果
-- 标记 `🎨` = 该练习融入色彩理论知识点（见底部速查手册）
-- 每周末有一个 **周末项目**，综合该周所有概念
-- 完成一个练习后在 `[ ]` 里打 `[x]`，跟踪进度
-
----
++ Conceptually....I seem like dig a infinite hole....
 
 ## Week 1 — SDF 进阶与组合艺术
 
 > 核心：从"画一个圆"到"用 SDF 构建场景"
 
 
-| Day | 练习                                                                     | 关键概念                                                                                 | 平台 |
-| --- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | ---- |
-| 1   | [ ] 用`smoothmin` 融合 3 个不同形状，做出有机感的 blob                   | smooth union / smin 函数族                                                               | [S]  |
-| 2   | [ ] 实现 domain repetition：无限重复的圆柱阵列                           | `mod()` / `fract()` 做空间重复                                                           | [S]  |
-| 3   | [ ] 极坐标花纹：用`atan2` + 径向 SDF 做万花筒                            | 极坐标变换、对称性                                                                       | [S]  |
-| 4   | [ ] SDF 做 2D 文字/符号描边 + 发光效果 🎨                                | SDF glow；**色彩：additive blending 原理，为什么 glow 用加法混合而非 alpha**             | [S]  |
-| 5   | [ ] 用 SDF onion 技巧做嵌套环形结构，加上颜色渐变 🎨                     | onion SDF、`abs(d)-thickness`；**色彩：cosine palette 调色板生成 `a+b*cos(2π(c*t+d))`** | [S]  |
-| 6   | [ ] ★ 把以上技巧组合：做一个"漂浮的几何花园" 🎨                         | 构图、组合；**色彩：互补色 / 类似色和谐，限制 3-4 色配色方案**                           | [S]  |
-| 7   | **周末项目**：在 Unity URP 中实现一个 SDF decal shader，投射到场景物体上 |                                                                                          | [U]  |
+| Day | practise                                                                 | 关键概念                                                                                 | lan |
+| --- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | --- |
+| 1   | [ ]`smoothmin` different shape and blob                                 | smooth union / smin 函数族                                                               | [S] |
+| 2   | [ ]`domain repetition`：无限重复的圆柱阵                                 | `mod()` / `fract()` 做空间重复                                                           | [S] |
+| 3   | [ ] 极坐标花纹：用`atan2` + 径向 SDF 做万花筒                            | 极坐标变换、对称性                                                                       | [S] |
+| 4   | [ ] SDF 做 2D 文字/符号描边 + 发光效果 🎨                                | SDF glow；**色彩：additive blending 原理，为什么 glow 用加法混合而非 alpha**             | [S] |
+| 5   | [ ] 用 SDF onion 技巧做嵌套环形结构，加上颜色渐变 🎨                     | onion SDF、`abs(d)-thickness`；**色彩：cosine palette 调色板生成 `a+b*cos(2π(c*t+d))`** | [S] |
+| 6   | [ ] ★ 把以上技巧组合：做一个"漂浮的几何花园" 🎨                         | 构图、组合；**色彩：互补色 / 类似色和谐，限制 3-4 色配色方案**                           | [S] |
+| 7   | **周末项目**：在 Unity URP 中实现一个 SDF decal shader，投射到场景物体上 |                                                                                          | [U] |
 
 **本周阅读**：Inigo Quilez 的 [2D SDF 函数合集](https://iquilezles.org/articles/distfunctions2d/) + [Cosine Palette](https://iquilezles.org/articles/palettes/)（程序化配色神器）
 
