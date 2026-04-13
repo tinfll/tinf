@@ -1,6 +1,5 @@
 <template>
   <div class="page-container">
-    
     <aside class="toc-wrapper" v-if="page.headers && page.headers.length > 0">
       <div class="toc-content">
         <h3 class="toc-title">目录</h3>
@@ -13,16 +12,11 @@
         </nav>
       </div>
     </aside>
-  </div>
-
-  <ShaderBackground /> <div class="page-container">
-    <aside class="toc-wrapper">...</aside>
-    <div class="view-box container">...</div>
+    <div class="view-box container">
+      <Content class="content" />
+      <Gitalk v-if="themeConfig.clientID"></Gitalk>
     </div>
-<div class="view-box container">
-  <Content class="content" />
-  <Gitalk v-if="themeConfig.clientID"></Gitalk>
-</div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -35,7 +29,6 @@ const data = useData()
 const base = data.site.value.base
 const { state } = useStore()
 import { onMounted, onUnmounted, watch } from 'vue'
-import ShaderBackground from './ShaderBackground.vue'
 
 const { page } = useData()
 
@@ -60,6 +53,7 @@ onUnmounted(() => {
     wordCount: 0,
     cover: '',
     excerpt: '',
+    pinned: false,
   }
 })
 

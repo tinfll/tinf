@@ -104,6 +104,8 @@ const { state } = useStore()
 const { page } = useData()
 const base = useData().site.value.base
 
+const HIDDEN_TAGS = ['ethers']
+
 // 日期格式化
 function formatDate(timestamp: number): string {
   const date = new Date(timestamp)
@@ -114,17 +116,24 @@ function formatDate(timestamp: number): string {
   }).format(date)
 }
 
-// 文章传值
+const hasTag = (post: any, tag: string) => post.tags && post.tags.includes(tag)
+const hasAnyHiddenTag = (post: any) => post.tags && post.tags.some((t: string) => HIDDEN_TAGS.includes(t))
+
 const finalPosts = computed(() => {
-  if (page.value.filePath === 'index.md') {
-    // Hide ethers-tagged posts from the main list
-    return posts.filter(post => !post.tags || !post.tags.includes('ethers'))
-  } else if (page.value.filePath === 'tags/index.md') {
-    return state.selectedPosts
-  } else if (page.value.filePath === 'ethers/index.md') {
-    return state.selectedPosts  // controlled by ethers.vue (empty when locked)
-  } else if (page.value.filePath === 'ta/index.md') {
-    return posts.filter(post => post.tags && post.tags.includes('TA'))
+  const path = page.value.filePath
+  if (path === 'index.md') {
+    return posts.filter(p => !hasAnyHiddenTag(p))
+  }
+  if (path === 'tags/index.md') {
+    if (!state.currTag) return posts.filter(p => !hasAnyHiddenTag(p))
+    return posts.filter(p => hasTag(p, state.currTag) && !hasAnyHiddenTag(p))
+  }
+  if (path === 'ethers/index.md') {
+    if (!state.ethersUnlocked) return []
+    return posts.filter(p => hasTag(p, 'ethers'))
+  }
+  if (path === 'ta/index.md') {
+    return posts.filter(p => hasTag(p, 'TA'))
   }
   return []
 })
@@ -224,21 +233,15 @@ const totalPage = computed(() => {
   return Math.ceil(finalPosts.value.length / pageSize.value) || 1
 })
 
-// 监听文章列表
 watch(
-  () => state.selectedPosts,
-  () => {
-    // 标签页逻辑，获取URL页码
+  () => [page.value.filePath, state.currTag, state.ethersUnlocked] as const,
+  ([newPath], [oldPath]) => {
     const urlParams = new URLSearchParams(window.location.search)
     const pageParam = urlParams.get('page')
+    const newTotalPages = Math.ceil(finalPosts.value.length / pageSize.value) || 1
 
-    // 标签更改时重置页码
-    const newTotalPages = Math.ceil(state.selectedPosts.length / pageSize.value) || 1
-
-    if (!pageParam || currPage.value > newTotalPages) {
+    if (newPath !== oldPath || !pageParam || currPage.value > newTotalPages) {
       currPage.value = 1
-
-      // 更新URL
       if (pageParam) {
         const url = new URL(window.location.href)
         url.searchParams.delete('page')

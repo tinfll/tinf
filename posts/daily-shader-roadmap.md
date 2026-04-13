@@ -22,15 +22,15 @@ dailyshader
 
 + Conceptually....I seem like dig a infinite hole....
 
-## Week 1 — SDF 进阶与组合艺术
+## Week 1 — SDF advanced
 
-> 核心：从"画一个圆"到"用 SDF 构建场景"
+> Core
 
 
 | Day | practise                                                                 | 关键概念                                                                                 | lan |
 | --- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | --- |
-| 1   | [ ]`smoothmin` different shape and blob                                 | smooth union / smin 函数族                                                               | [S] |
-| 2   | [ ]`domain repetition`：无限重复的圆柱阵                                 | `mod()` / `fract()` 做空间重复                                                           | [S] |
+| 1   | `smoothmin` different shape and blob                                    | smooth union / smin etc                                                                  | [S] |
+| 2   | `domain repetition`：infinite                                            | `mod()` / `fract()` 做空间重复                                                           | [S] |
 | 3   | [ ] 极坐标花纹：用`atan2` + 径向 SDF 做万花筒                            | 极坐标变换、对称性                                                                       | [S] |
 | 4   | [ ] SDF 做 2D 文字/符号描边 + 发光效果 🎨                                | SDF glow；**色彩：additive blending 原理，为什么 glow 用加法混合而非 alpha**             | [S] |
 | 5   | [ ] 用 SDF onion 技巧做嵌套环形结构，加上颜色渐变 🎨                     | onion SDF、`abs(d)-thickness`；**色彩：cosine palette 调色板生成 `a+b*cos(2π(c*t+d))`** | [S] |
@@ -243,39 +243,7 @@ dailyshader
 - 矩阵旋转（2D rotation matrix、Rodrigues rotation）
 - 四元数基础（Unity 中的旋转表达）
 - 复数与分形（Mandelbrot / Julia set 作为练习项目）
-- 色彩空间变换矩阵（RGB↔YUV、RGB↔OKLAB 的线性代数本质）
+- 色彩空间变换矩阵（RGB↔YUV、RGB↔OKLAB 的线性代数本质
 
----
-
-## Claude Custom Instructions 参考
-
-把以下内容放入 Claude 的用户偏好设置中：
-
-```
-我在做 daily shader 练习（8 周计划），目标是系统掌握 shader 编程。
-平台：Shadertoy GLSL 为主，穿插 Unity URP HLSL 实战。
-
-如果我说"今日练习"或"Day XX"，请根据我的学习路线给对应的练习任务：
-1. 简述目标效果（最好附一句视觉意象描述）
-2. 列出核心概念和关键函数
-3. 让我先写，我贴代码后再给反馈
-
-当前进度：[Week 1 Day 1]（我会手动更新这里）
-
-已有基础：SDF、UV 操作、基本 noise、光照模型、法线贴图、MatCap、Sobel 边缘检测。
-风格偏好：诗意 / 梦幻 / 空间感，不要纯技术 demo 感。
-讲解风格：联系直觉和几何意义，给具体代码片段，少说套话。
-```
-
----
-
-## 进度追踪
-
-完成练习后在对应 `[ ]` 中标记 `[x]`，并记录：
-
-- 完成日期
-- 难度感受（😊 轻松 / 😐 适中 / 😰 吃力）
-- 自己的 Shadertoy 链接（如果发布了的话）
-- 一句话笔记：这个练习最关键的 insight 是什么
 
 > 祝你写出漂亮的 shader ✨

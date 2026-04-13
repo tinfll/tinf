@@ -15,28 +15,10 @@
 <script setup lang="ts">
 import { data as posts } from '../utils/posts.data'
 import { computed } from 'vue'
-import { useStore } from '../store'
 
-const { state } = useStore()
-
-// 筛选出包含 TA 标签的文章
-const filteredPosts = computed(() => {
-  return posts.filter(post => 
-    post.tags && post.tags.includes('TA')
-  )
-})
-
-// 重要：将筛选后的文章设置到 store 中，这样 PostList 组件就能使用了
-import { onMounted, watch } from 'vue'
-
-onMounted(() => {
-  state.selectedPosts = filteredPosts.value
-})
-
-// 监听文章数据变化
-watch(filteredPosts, (newPosts) => {
-  state.selectedPosts = newPosts
-}, { immediate: true })
+const filteredPosts = computed(() =>
+  posts.filter(post => post.tags && post.tags.includes('TA'))
+)
 </script>
 
 <style scoped lang="less">

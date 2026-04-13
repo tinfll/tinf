@@ -97,6 +97,8 @@ but these assumption is established on pure 2 nums...
 Actually there is EN pin.(..........fine.)
 
 
+### 7segment display
+
 | 0       | 1       | 2       | 3       | 4       | 5       | 6 | 7 | 8 | 9 |  |
 | ------- | ------- | ------- | ------- | ------- | ------- | - | - | - | - | - |
 | 1111110 | 0110000 | 1101101 | 1111001 | 0110011 | 1011011 |   |   |   |   |  |
@@ -117,3 +119,34 @@ tunnel + cp is ok.
 If there is some python script it will be perfect....
 
 register set s - > gpr
+
+
+### encode
+
+2_1
+
+
+
+4_2 priority
+
+dx 0 0 0
+   0 1 1
+   1 0 1
+   1 1 1
+
+cd 0 0 0
+   1 0 1
+   0 1 1
+   1 1 1
+
+cx 
+
+
+16_4
+
+
+### Selector
+
+
+
+### adder

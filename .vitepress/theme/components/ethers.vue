@@ -38,7 +38,7 @@
 
 <script setup lang="ts">
 import { data as posts } from '../utils/posts.data'
-import { computed, ref, onMounted, watch } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 import { useStore } from '../store'
 import { useData } from 'vitepress'
 
@@ -48,21 +48,23 @@ const SESSION_KEY = 'ethers_unlocked'
 const { theme } = useData()
 const correctPassword = computed(() => theme.value.ethersPassword || '')
 
-const unlocked = ref(false)
+const unlocked = computed({
+  get: () => state.ethersUnlocked,
+  set: (v) => { state.ethersUnlocked = v },
+})
 const inputPassword = ref('')
 const wrongPassword = ref(false)
 const shaking = ref(false)
 
-// Check sessionStorage on mount
 onMounted(() => {
   if (sessionStorage.getItem(SESSION_KEY) === 'true') {
-    unlocked.value = true
+    state.ethersUnlocked = true
   }
 })
 
 function tryUnlock() {
   if (inputPassword.value === correctPassword.value) {
-    unlocked.value = true
+    state.ethersUnlocked = true
     wrongPassword.value = false
     sessionStorage.setItem(SESSION_KEY, 'true')
   } else {
@@ -76,15 +78,6 @@ function tryUnlock() {
 const filteredPosts = computed(() =>
   posts.filter(post => post.tags && post.tags.includes('ethers'))
 )
-
-// Only expose posts to PostsList when unlocked
-watch([unlocked, filteredPosts], () => {
-  if (unlocked.value) {
-    state.selectedPosts = filteredPosts.value
-  } else {
-    state.selectedPosts = []
-  }
-}, { immediate: true })
 </script>
 
 <style scoped lang="less">

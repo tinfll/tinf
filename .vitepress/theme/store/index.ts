@@ -12,11 +12,13 @@ interface StoreState {
   SpinePlayerEnabled: boolean
   showDropdownMenu: boolean
   darkMode: 'light' | 'dark' | 'system'
+  ethersUnlocked: boolean
 }
 
 const state: StoreState = reactive({
   selectedPosts: [],
   currTag: '',
+  ethersUnlocked: false,
   currPost: {
     id: 0,
     title: '',

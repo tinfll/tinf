@@ -16,7 +16,6 @@ Why do that: I kindly hate ai now...
 
 ## Day 1
 
-
 ![](/day1.webp)
 
 $$
@@ -77,7 +76,7 @@ float sdTetrahedron( in vec3 p ){
     abs(p.x - p.y) + p.z),
     abs(p.y + p.z) - p.x),
     abs(p.z + p.x) - p.y) * 1./ k;
-    
+  
     return r;
 }
 
@@ -85,13 +84,13 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
     float t = iTime;
     vec2 uv = (fragCoord.xy * 2. - iResolution.xy) / min(iResolution.y, iResolution.x);
 
-    
+  
     float r1 = (sdCircle(vec2(uv.x + cos(iTime), uv.y), 0.5));
     float r2 = step(sdTetrahedron(vec3(2., 2., 0.6)), 0.0);//actually can use step(x, 0./0., x) to draw steep edge.
     float r3 = (sdPentagram(vec2(uv.x, uv.y + sin(iTime)), 0.7));
     vec4 r = vec4(0.3, 0.2, 0.5, 0.0);
     float r4 = (sdRoundedBox( uv, vec2(0.5, 0.5) , r));
-    
+  
     float fr = smin1(r1, r3 , 0.3);//but first r then step when use min otherwise there will only display color blend
     fr = smin(fr, r4, 0.1);
 
@@ -103,3 +102,30 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
 }
 ```
 
+![alt text](/image12.webp)
+
+
+## day2
+
+```glsl
+
+float sdBox ( in vec2 p, in vec2 b){
+    vec2 q = abs(p) - b; // you can see it as fold negative value into positive I qudrant
+    return length(max(q, 0.));// then return to the distance value to the corner
+}
+void mainImage(out vec4 fragColor, in vec2 fragCoord) {
+    float t = iTime;
+
+    vec2 p = (fragCoord * 2.0 - iResolution.xy) / min(iResolution.y, iResolution.x);
+    float k = 1.4;
+    float r = step(sdBox(vec2(mod(p.x + t, k) , fract(p.y + t) - 0.5),  vec2(0.6, 0.4)), 0.);
+   //can use -0.5 to remap to the screen space
+
+
+    //float r = (sdBox(vec2(fract(p.x) + sin(t), p.y),  vec2(0.6, 0.4)));
+  
+    vec3 col = vec3(r);
+    fragColor = vec4(col, 1.);
+}
+
+```

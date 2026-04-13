@@ -14,10 +14,10 @@
       </Banner>
       <transition name="fade" mode="out-in">
         <PostsList
-          v-if="page.filePath === 'index.md' || 
-                page.filePath === 'tags/index.md' || 
+          v-if="page.filePath === 'index.md' ||
+                page.filePath === 'tags/index.md' ||
                 page.filePath === 'ethers/index.md'||
-                page.filePath === 'TA/index.md'"
+                page.filePath === 'ta/index.md'"
         ></PostsList>
         <PostViewer v-else></PostViewer>
       </transition>
