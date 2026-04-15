@@ -14,6 +14,24 @@ Why do that: I kindly hate ai now...
 
 ---
 
+
+
+Once you learn shader. Then you can make OC eyes.
+I ll call it sdfEYES for wifi(`yes`)!!!!
+
+
+<video controls width="100%">
+  <source src="/sdfeyes.mp4" type="video/mp4">
+您的浏览器不支持 video 标签。
+</video>
+
+
+古法
+
+![](/image13.webp)
+
+![](/image14.webp)
+
 ## Day 1
 
 ![](/day1.webp)
@@ -103,6 +121,9 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
 ```
 
 ![alt text](/image12.webp)
+
+
+
 
 
 ## day2
