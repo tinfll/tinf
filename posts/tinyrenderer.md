@@ -2,6 +2,7 @@
 title: tinyrenderer
 date: 2026-03-13
 tags: [tinyrenderer]
+pinned: true
 head:
   - - meta
     - name: tip

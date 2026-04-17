@@ -1,7 +1,8 @@
 ---
-title: ABC
+title: ABC(indie game)
 date: 2026-03-22
 tags: [Indie game]
+pinned: true
 head:
   - - meta
     - name: live2d
@@ -16,6 +17,8 @@ This page is documenting some develop process about ABC(yet dont have name:)
 ---
 
 A:(as follow is the newest but not the last:)
+** now stage: code refactoring...... **
+
 
 
 ## render pipelne about urp
@@ -30,6 +33,7 @@ the main scene:
 + background(RT,transparent,queue = 3000-2)
 + character(toonshader + custom RT filter transparent,queue = 3000-1)
 + FX layer(plane transparent queue = 3000)
++ LightFX
 
 all process is animated available to achieve the performance(with naninovel frame, and I try to learn that, too.)
 (but I think it seemed to be over...?)
@@ -147,10 +151,13 @@ float getneighboralpha(float2 uv, float2 offset)
 
 #### toon shader(learn from unity toon)
 
-lerp
-color
-normal outline(I hate this)
-rimcolor with mask(I like this)
++ lerp
++ color
++ normal outline(I hate this)
++ rimcolor with mask(I like this)
++ chroma split
+
+
 
 face / liuhai
 
@@ -170,6 +177,9 @@ still bugs...I try to figure out some better ways to achieve the perfect angle
 (but i like it)
 
 ### some 3D render
+
++ 
+
 
 ## Animate system
 
@@ -192,3 +202,8 @@ so need to back to render pipeline to set mouth material apart(denote just a lit
 ### other customed animate
 
 ## naninovel's command lines
+
+
+
+
+##

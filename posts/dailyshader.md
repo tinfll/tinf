@@ -32,7 +32,7 @@ I ll call it sdfEYES for wifi(`yes`)!!!!
 
 ![](/image14.webp)
 
-## Day 1
+## Day 1 sdf basic
 
 ![](/day1.webp)
 
@@ -120,13 +120,9 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
 }
 ```
 
-![alt text](/image12.webp)
 
 
-
-
-
-## day2
+## day2 mod fract
 
 ```glsl
 
@@ -150,3 +146,44 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
 }
 
 ```
+
+## day3 atan polar coordinate
+
+const float pi = 3.1415926;
+mat2 rot(in float a)
+{
+    return mat2(cos(a), sin(a),
+                -sin(a), cos(a));
+}
+float sdCircle( in vec2 p, in float r)
+{
+    return length(p) - r;
+}
+void mainImage(out vec4 fragColor, in vec2 fragCoord) {
+    float t = iTime;
+
+    vec2 p = (fragCoord * 2.0 - iResolution.xy) / min(iResolution.y, iResolution.x);
+    vec2 v;
+    float a = atan(p.y, p.x); // get angle in radians
+    float r = length(p);
+
+    //fold and fractual
+    float s = 6.;
+    float angle = 2. * pi / s;
+    a = (mod(a, angle)) - angle * 0.5;// mod: map a into (0, angle) then center at (-angle/2, angle/2)
+    //a = abs(a - angle * 0.5);
+    //a = fract(a/angle) * angle - angle * 0.5; // same as mod
+
+    vec2 q = vec2(cos(a), sin(a)) * r;
+
+    float d = step(-sdCircle(q - vec2(0.2, 0.0), 0.1), 0.);
+
+    //float d = step(r - (0.2 + 0.5 * cos(a * 10.0)), 0.);
+
+    vec3 col = vec3(d);
+    
+
+
+    
+    fragColor = vec4(col, 1.);
+}
