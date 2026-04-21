@@ -1,52 +1,36 @@
-Shader "Unlit/SnowFlake"
-{
-    Properties
-    {
-        _MainTex ("Texture", 2D) = "white" {}
-    }
-    SubShader
-    {
-        Tags { "RenderType"="Opaque" }
+学长你好！冒昧打扰下~
+我是一位大一学生，想问问如果您有在制作游戏且需要美术资产(3d方向)的话，我觉得我可以尝试下?))
+实际是这样，（虽然有点奇幻但是过于离谱的事情往往却是真的）去年大一刚开学时军训某个晚上看到您的文章后，第二天就去学图形学了，然后……就这样学了半年🤔(…………)
 
-        Pass
-        {
-            HLSLPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
+我的博客是:tinfeng.org
 
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+然后……e，这是大概粗制滥造做“作品集”（。其实百忙中看一笑也挺好的）大多都是插件玩具（什）
+(作品集具体技术细节在博客里面写文章展开来着（貌似也写的抽象版）
 
-            struct v_in
-            {
-                float4 positionOS : POSITION;
-                float2 uv : TEXCOORD0;
-            };
 
-            struct v_out
-            {
-                float4 positionCS_SV : SV_POSITION;
-                float2 uv : TEXCOORD0;
+擅长的工具大概有dcc和引擎了...:
+会更擅长二次元的动漫角色制作流程，但是目前既不T也不A 
+绘画能力和设计能力较弱
 
-            };
 
-            sampler2D _MainTex;
-            float4 _MainTex_ST;
+以及，感谢您当初的笔记引领我入坑了图形学(……真……)
 
-            v_out vert(v_in i)
-            {
-                v_out o;
-                o.positionCS_SV = TransformObjectToHClip(i.positionOS.xyz);
-                o.uv = i.uv;
-                return o;
-            }
 
-           float4 frag(v_out i) : SV_Target
-            {
-                // sample the texture
-                float4 col = tex2D(_MainTex, i.uv);
-                return col;
-            }
-            ENDHLSL
-        }
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+然后真的和您走了真的很像的路(?)(暑假学cs50，后来cs106b然后games101，但不同的是后来就更偏向美术方向，学的的也是工科，但是数理逻辑能力只有死磕才勉强能懂，不擅长学校体系化去学，主要去学各种dcc工具制作OC角色建模/动画/渲染每个环节的制作流程(目前也在细化?)、和Unity/UE5衔接使用等) tinyrenderer软光栅是(依然还在写最后一节ao(……数学不是特别好……)，learnopengl当pbr文档查……了？
+
+
+对gameplay机制设计能力是一坨，玩游戏不擅长操作类😢
+
+看了您的博客等等感觉您也许是对ue日式奇幻冒险类开放世界感兴趣或？（ps：我也很喜欢takki和saki（
