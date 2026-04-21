@@ -11,6 +11,7 @@ head:
     - name: keywords
       content: live2d
 ---
+
 ABC
 This page is documenting some develop process about ABC(yet dont have name:)
 
@@ -19,9 +20,27 @@ This page is documenting some develop process about ABC(yet dont have name:)
 A:(as follow is the newest but not the last:)
 ** now stage: code refactoring...... **
 
+# program 
+
+## all 
+
+unity two scenes shift, 
+
+## 
+one scene control different gameobject
+
+then other naninovel algorithm
 
 
-## render pipelne about urp
+
+# art
+
+## render pipeline
+
++ toonshader(toonshader.md)
++ unity urp render settings: custom srp material(?)
++ lightFX
+
 
 So i want to share the render plan in my indie game....(thinking...even though i dont regard it as an 'indie game')
 
@@ -44,7 +63,12 @@ basically naninovel and urp, but I take the 3D asset(character from Vroid then b
 
 and so there is still some performance trick about various useing methods of render texture...etc(please ignore my poor language skill...)
 
-#### pencil / draft(learn from camerafilterpackage)
+
+explore post process utils:
+
+post process pencil
+
+#### post process pencil / draft(learn from camerafilterpackage)
 
 ```c
     float4 f = SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_BlitTexture, i.uv);
@@ -183,13 +207,20 @@ still bugs...I try to figure out some better ways to achieve the perfect angle
 
 ## Animate system
 
+bone animation + VAT(experienmental)
+animation controller to pass string sign(?)
+
+
 ### Body layers
 
 blender k by hand now
 
 so inefficient way with my weak animation knowlegde
 
-(and VN dont seem to need this)
+(and VN dont seem to need this
+that involve the style of animation)
+
+some Japanese frame animation or America animation(physically right and fluency?)
 ...trying to improve
 
 ### Face layers

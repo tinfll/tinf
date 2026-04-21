@@ -30,7 +30,7 @@ dailyshader
 | Day | practise                                                                 | 关键概念                                                                                 | lan |
 | --- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | --- |
 | 1   | `smoothmin` different shape and blob                                    | smooth union / smin etc                                                                  | [S] |
-| 2   | `domain repetition`：infinite                                            | `mod()` / `fract()` 做空间重复                                                           | [S] |
+| 2   | `domain repetition`：infinite                                            | `mod()` / `fract()`                                                                     | [S] |
 | 3   | use`atan2` + radial SDF                                                 | Polar coordinate and mirror                                                              | [S] |
 | 4   | [ ] SDF 做 2D 文字/符号描边 + 发光效果 🎨                                | SDF glow；**色彩：additive blending 原理，为什么 glow 用加法混合而非 alpha**             | [S] |
 | 5   | [ ] 用 SDF onion 技巧做嵌套环形结构，加上颜色渐变 🎨                     | onion SDF、`abs(d)-thickness`；**色彩：cosine palette 调色板生成 `a+b*cos(2π(c*t+d))`** | [S] |
